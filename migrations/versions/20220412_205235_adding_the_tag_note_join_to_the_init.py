@@ -22,7 +22,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('tag_id', sa.Integer(), nullable=False),
     sa.Column('note_id', sa.Integer(), nullable=False),
-    sa.Column('dummy_column', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['note_id'], ['notes.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['tag_id'], ['tags.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
