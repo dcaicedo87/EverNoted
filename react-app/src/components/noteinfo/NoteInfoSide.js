@@ -15,19 +15,15 @@ const NoteInfoSide = () => {
     const userId = sessionUser.id;
     console.log(userId) // console log for user id
 
-    // const notesObj = useSelector(state => state.notes);
-    // console.log(notesObj)
 
     const notesArr = useSelector(state => Object.values(state.notes))
-    console.log(notesArr)
+    console.log(notesArr) // console for notes array
 
     let sum = 0;
 
     for (let i = 0; i < notesArr.length; i++) {
         sum += 1
     }
-
-
 
     useEffect(() => {
         dispatch(getAllUserNotesThunk(userId))
