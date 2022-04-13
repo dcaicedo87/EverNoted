@@ -13,11 +13,11 @@ const NoteInfoSide = () => {
 
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
-    console.log(userId) // console log for user id
+    // console.log(userId) // console log for user id
 
 
     const notesArr = useSelector(state => Object.values(state.notes))
-    console.log(notesArr) // console for notes array
+    // console.log(notesArr) // console for notes array
 
     let sum = 0;
 
