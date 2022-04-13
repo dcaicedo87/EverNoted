@@ -1,0 +1,14 @@
+.navbar-container {
+    color: darkgray;
+    width: 225px;
+    height: 100vh;
+    display: flex;
+    padding: 8px;
+    z-index: 2;
+    flex-grow: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-shrink: 0;
+    flex-direction: column;
+    background-color: #1A1A1A;
+}
