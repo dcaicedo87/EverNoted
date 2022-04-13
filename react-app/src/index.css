@@ -65,3 +65,7 @@ small {
     color: white;
     border-right: 1px solid #000000;
 }
+
+.item-contaner {
+    text-decoration: none;
+}

@@ -21,6 +21,12 @@ const NoteInfoSide = () => {
     const notesArr = useSelector(state => Object.values(state.notes))
     console.log(notesArr)
 
+    let sum = 0;
+
+    for (let i = 0; i < notesArr.length; i++) {
+        sum += 1
+    }
+
 
 
     useEffect(() => {
@@ -34,13 +40,18 @@ const NoteInfoSide = () => {
             <div>
                 <h1>NOTES</h1>
             </div>
+            <div>{`${sum} Notes`}</div>
             <div>
             {notesArr.map((note) => (
-                <div className="note-container" key={note.id}>
-                    <div>{note.title}</div>
-                    <div>{note.content}</div>
-                    <div>{note.updated_at}</div>
-                </div>
+                <ul className="item-container" key={note.id}>
+                    <a href= {`/notes/${note.id}`}>
+                        <li>
+                            <div>{note.title}</div>
+                            <div>{note.content}</div>
+                            <div>{note.updated_at}</div>
+                        </li>
+                    </a>
+                </ul>
             ))}
             </div>
         </div>
