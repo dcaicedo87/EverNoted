@@ -42,7 +42,7 @@ function App() {
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
-          <ProtectedRoute path="/notes/:userId" exact={true}>
+          <ProtectedRoute path="/notes" exact={true}>
             <NoteInfoSide />
           </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >

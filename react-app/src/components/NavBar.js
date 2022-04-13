@@ -1,15 +1,19 @@
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import"./NavBar.css";
 
 const NavBar = () => {
+  const sessionUser = useSelector(state => state.session.user);
+  const userId = sessionUser?.id;
+
   return (
     <div>
       <nav className="navbar-container">
         <div>
-          HEADER
+          <h1>{sessionUser.username}</h1>
         </div>
         <div>
           <button>ADD NOTE</button>
@@ -21,7 +25,7 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to='/notes/:userId' exact={true} activeClassName='active'>
+            <NavLink to='/notes' exact={true} activeClassName='active'>
               All Notes
             </NavLink>
           </li>
