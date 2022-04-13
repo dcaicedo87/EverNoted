@@ -8,6 +8,12 @@ const NavBar = () => {
   return (
     <div>
       <nav className="navbar-container">
+        <div>
+          HEADER
+        </div>
+        <div>
+          <button>ADD NOTE</button>
+        </div>
         <ul>
           <li>
             <NavLink to='/' exact={true} activeClassName='active'>
@@ -15,20 +21,33 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to='/notes' exact={true} activeClassName='active'>
+              All Notes
+            </NavLink>
+          </li>
+          <NavLink to='/notebooks' exact={true} activeClassName='active'>
+            Notebooks
+          </NavLink>
+          <li>
+            <NavLink to='/tags' exact={true} activeClassName='active'>
+              Tags
+            </NavLink>
+          </li>
+          {/* <li>
             <NavLink to='/login' exact={true} activeClassName='active'>
               Login
             </NavLink>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <NavLink to='/sign-up' exact={true} activeClassName='active'>
               Sign Up
             </NavLink>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <NavLink to='/users' exact={true} activeClassName='active'>
               Users
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <LogoutButton />
           </li>

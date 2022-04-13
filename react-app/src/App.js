@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import NoteInfoSide from './components/noteinfo/NoteInfoSide';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,8 +42,11 @@ function App() {
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
+          <ProtectedRoute path="/notes" exact={true}>
+            <NoteInfoSide />
+          </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >
-            <h1>My Home Page</h1>
+            <h1>SPLASH PAGE (route="/")</h1>
           </ProtectedRoute>
         </Switch>
       </BrowserRouter>
