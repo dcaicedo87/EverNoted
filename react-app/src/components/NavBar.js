@@ -7,7 +7,7 @@ import"./NavBar.css";
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
-  const userId = sessionUser?.id;
+  // const userId = sessionUser?.id;
 
   return (
     <div>

@@ -6,6 +6,7 @@
     max-width: 100vw;
     background-color: #2e2e2e;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 html,
@@ -58,14 +59,14 @@ small {
 
 .index-note {
     display: flex;
-    height: 100vh;
-    width: 250px;
+    height: 100%;
+    width: 350px;
     flex-direction: column;
     background-color: #1a1a1a73;
     color: white;
     border-right: 1px solid #000000;
 }
 
-.item-contaner {
-    text-decoration: none;
+.item-container a li {
+    list-style-type: none;
 }

@@ -31,7 +31,7 @@ const NoteInfoSide = () => {
 
     useEffect(() => {
         dispatch(getAllUserNotesThunk(userId))
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
 
 
