@@ -1,5 +1,6 @@
 const GET_ALL_NOTES = "notes/all"
 const CREATE_NOTE = "note/create"
+const EDIT_NOTE = "note/edit"
 
 
 const getAllNotes = notes => {
@@ -13,6 +14,13 @@ const createNote = note => {
     return {
         type: CREATE_NOTE,
         note,
+    }
+}
+
+const editNote = note => {
+    return {
+        type: EDIT_NOTE,
+        note
     }
 }
 
@@ -43,6 +51,17 @@ export const createNoteThunk = (userId) => async dispatch => {
         return note;
     }
 }
+
+export const editNoteThunk = (userId, noteId, note) => async dispatch => {
+    const res = await fetch(`/api/users/${userId}/notes/${noteId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(note),
+    });
+    const updateNote = await res.json();
+    dispatch(editNote(updateNote));
+    return updateNote;
+  };
 
 //reducer
 const initialState = {};
