@@ -13,7 +13,7 @@ const NavBar = () => {
     <div>
       <nav className="navbar-container">
         <div>
-          <h1>{sessionUser.username}</h1>
+          <h1>{sessionUser?.username}</h1>
         </div>
         <div>
           <button>ADD NOTE</button>
