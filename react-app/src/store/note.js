@@ -1,4 +1,5 @@
 const GET_ALL_NOTES = "notes/all"
+const CREATE_NOTE = "note/create"
 
 
 const getAllNotes = notes => {
@@ -8,16 +9,38 @@ const getAllNotes = notes => {
     };
 };
 
+const createNote = note => {
+    return {
+        type: CREATE_NOTE,
+        note,
+    }
+}
+
 
 //thunks
 
-export const getAllUserNotesThunk = id => async dispatch => {
-    const res = await fetch(`/api/notes/${id}/all`)
+export const getAllUserNotesThunk = userId => async dispatch => {
+    const res = await fetch(`/api/users/${userId}/all`)
 
     if (res.ok) {
         const data = await res.json();
         dispatch(getAllNotes(data))
         return data;
+    }
+}
+
+export const createNoteThunk = (userId) => async dispatch => {
+    const res = await fetch(`/api/users/${userId}/create`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if (res.ok) {
+        const note = await res.json();
+        dispatch(createNote(note));
+        return note;
     }
 }
 
