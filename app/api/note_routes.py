@@ -13,7 +13,7 @@ def get_notes(user_id):
 
 @note_routes.route('/create', methods=['POST'])
 def create_note(user_id):
-    new_note = Note(title="Untitled", content="", user_id=userId, notebook_id=0)
+    new_note = Note(title="Untitled", content="", user_id=user_id, notebook_id=0)
     db.session.add(new_note)
     db.session.commit()
     return new_note.to_dict()

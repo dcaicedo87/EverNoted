@@ -30,7 +30,7 @@ export const getAllUserNotesThunk = userId => async dispatch => {
 }
 
 export const createNoteThunk = (userId) => async dispatch => {
-    const res = await fetch(`/api/notes/${userId}/create`, {
+    const res = await fetch(`/api/users/${userId}/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -1,13 +1,25 @@
 
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
+import { createNoteThunk } from '../store/note';
 import LogoutButton from './auth/LogoutButton';
 import"./NavBar.css";
 
 const NavBar = () => {
+
+  const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   // const userId = sessionUser?.id;
+
+  const handleNewNote = async e => {
+    if (!sessionUser.id) return;
+
+    const note = await (dispatch(createNoteThunk(sessionUser.id)))
+
+    history.push('/notes')
+  }
 
   return (
     <div>
@@ -16,7 +28,7 @@ const NavBar = () => {
           <h1>{sessionUser?.username}</h1>
         </div>
         <div>
-          <button>ADD NOTE</button>
+          <button onClick={handleNewNote}>ADD NOTE</button>
         </div>
         <ul>
           <li>
