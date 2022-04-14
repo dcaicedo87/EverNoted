@@ -29,7 +29,9 @@ const NoteInfoSide = () => {
         dispatch(getAllUserNotesThunk(userId))
     }, [dispatch, userId]);
 
-
+    //function to sort updated_at
+    // const sortedNotesArr = notesArr.sort();
+    // console.log(sortedNotesArr);
 
     return (
         <div className="index-note">

@@ -1,33 +1,67 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { deleteNoteThunk, editNoteThunk } from '../../store/note';
+import { getAllUserNotesThunk } from '../../store/note';
 
 
 const NoteInfoEdit = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    console.log(`SESSION USER:`, sessionUser)
+
+    const history = useHistory();
+
+    const { noteId } = useParams();
+    console.log(`NOTE ID:`, noteId)
+
+    const [title, setTitle] = useState(sessionUser.notes[noteId]?.title);
+    const [content, setContent] = useState(sessionUser.notes[noteId]?.content);
+
     const userId = sessionUser.id;
     console.log(`USER ID:`, userId) // console for user id
 
-    const [title, setTitle] = useState();
-    const [content, setContent] = useState();
+    const deleteNote = noteId => {
+        dispatch(deleteNoteThunk(noteId));
+        history.push(`/notes`)
+    };
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        let updatedNote = {
+          id: parseInt(noteId),
+          title,
+          content,
+        };
+        console.log(`UPDATE NOTE:`, updatedNote)
 
-    let note_id = useParams().noteId;
-    // console.log("NOTE ID", note_id)
+        //error validation
+        // setErrors([])
 
+        // const newErrors = [];
 
-    const notesObj = useSelector(state => state.notes)
-    console.log(`NOTES OBJ****`, notesObj)
+        // if (updatedReview.content.length < 4) {
+        //   newErrors.push("Content must be 4 characters or more.");
+        // }
 
-    const currentNote = notesObj[note_id]
-    console.log(`Current Note:`, currentNote)
+        // if (newErrors.length > 0) {
+        //   setErrors(newErrors);
+        //   return;
+        // }
 
+        dispatch(editNoteThunk(noteId, updatedNote))
+        // dispatch(getAllUserNotesThunk(userId)) // for possible refresh to side panel.
+        history.push(`/notes`)
+    };
+
+    useEffect(() => {
+        dispatch(getAllUserNotesThunk(userId))
+    }, [dispatch, userId]);
 
     return (
         <>
             <div>
-                <form >
+                <form onSubmit={handleSubmit}>
                 {/* <div>
                     {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
@@ -38,8 +72,8 @@ const NoteInfoEdit = () => {
                     name='title'
                     type='text'
                     placeholder='Title'
-                    value={currentNote?.title}
-                    //   onChange={}
+                    value={title}
+                      onChange={e => setTitle(e.target.value)}
                     />
                 </div>
                 <div>
@@ -47,22 +81,15 @@ const NoteInfoEdit = () => {
                     className="edit-form-content"
                     name='content'
                     placeholder='Content'
-                    value={currentNote?.content}
-                    //   onChange={updatePassword}
-                    />
-                </div>
-                <div>
-                    <input
-                    name='user_id'
-                    type='hidden'
-                    value={userId}
+                    value={content}
+                      onChange={e => setContent(e.target.value)}
                     />
                 </div>
                 <div className="edit-form-button-container">
                     <button type='submit'>Save</button>
-                    <button>DELETE NOTE</button>
                 </div>
                 </form>
+                    <button onClick={() => deleteNote(noteId)}>DELETE NOTE</button>
             </div>
         </>
       );

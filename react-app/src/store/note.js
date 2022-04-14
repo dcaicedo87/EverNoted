@@ -1,5 +1,7 @@
 const GET_ALL_NOTES = "notes/all"
 const CREATE_NOTE = "note/create"
+const EDIT_NOTE = "note/edit"
+const DELETE_NOTE = "note/delete"
 
 
 const getAllNotes = notes => {
@@ -16,11 +18,35 @@ const createNote = note => {
     }
 }
 
+const editNote = note => {
+    return {
+        type: EDIT_NOTE,
+        note
+    }
+}
+
+const deleteNote = note => {
+    return {
+        type: DELETE_NOTE,
+        note,
+    }
+}
+
 
 //thunks
 
 export const getAllUserNotesThunk = userId => async dispatch => {
     const res = await fetch(`/api/users/${userId}/all`)
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getAllNotes(data))
+        return data;
+    }
+}
+
+export const getSingleUserNoteThunk = (userId, noteId) => async dispatch => {
+    const res = await fetch(`/api/users/${userId}/notes/${noteId}`)
 
     if (res.ok) {
         const data = await res.json();
@@ -44,6 +70,29 @@ export const createNoteThunk = (userId) => async dispatch => {
     }
 }
 
+export const editNoteThunk = (noteId, note) => async dispatch => {
+    const res = await fetch(`/api/notes/${noteId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(note),
+    });
+    const updateNote = await res.json();
+    dispatch(editNote(updateNote));
+    return updateNote;
+};
+
+export const deleteNoteThunk = noteId => async dispatch => {
+    const res = await fetch(`/api/notes/${noteId}/delete`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      dispatch(deleteNote(noteId));
+      return data;
+    }
+  };
+
 //reducer
 const initialState = {};
 
@@ -53,11 +102,17 @@ const noteReducer = (state = initialState, action) => {
     case GET_ALL_NOTES:
       newState = {};
       action.notes.notes.forEach(
-        note => (newState[note.id] = note)
+        note => (newState[note.updated_at] = note)
       );
       return newState;
     case CREATE_NOTE:
         newState[action.note.id] = action.note;
+        return newState;
+    case EDIT_NOTE:
+        newState[action.note.id] = action.note;
+        return newState;
+    case DELETE_NOTE:
+        delete newState[action.id];
         return newState;
     default:
       return state;
