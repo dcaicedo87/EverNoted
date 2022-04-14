@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { deleteNoteThunk, editNoteThunk } from '../../store/note';
+import { getAllUserNotesThunk } from '../../store/note';
 
 
 const NoteInfoEdit = () => {
@@ -14,14 +15,15 @@ const NoteInfoEdit = () => {
     const { noteId } = useParams();
     console.log(`NOTE ID:`, noteId)
 
-    const [title, setTitle] = useState(sessionUser.notes[noteId].title);
-    const [content, setContent] = useState(sessionUser.notes[noteId].content);
+    const [title, setTitle] = useState(sessionUser.notes[noteId]?.title);
+    const [content, setContent] = useState(sessionUser.notes[noteId]?.content);
 
     const userId = sessionUser.id;
     console.log(`USER ID:`, userId) // console for user id
 
     const deleteNote = noteId => {
         dispatch(deleteNoteThunk(noteId));
+        history.push(`/notes`)
     };
 
     const handleSubmit = e => {
@@ -48,9 +50,13 @@ const NoteInfoEdit = () => {
         // }
 
         dispatch(editNoteThunk(noteId, updatedNote))
-        history.push(`/notes/${noteId}`)
+        // dispatch(getAllUserNotesThunk(userId)) // for possible refresh to side panel.
+        history.push(`/notes`)
     };
 
+    useEffect(() => {
+        dispatch(getAllUserNotesThunk(userId))
+    }, [dispatch, userId]);
 
     return (
         <>
@@ -81,9 +87,9 @@ const NoteInfoEdit = () => {
                 </div>
                 <div className="edit-form-button-container">
                     <button type='submit'>Save</button>
-                    <button onClick={() => deleteNote(noteId)}>DELETE NOTE</button>
                 </div>
                 </form>
+                    <button onClick={() => deleteNote(noteId)}>DELETE NOTE</button>
             </div>
         </>
       );

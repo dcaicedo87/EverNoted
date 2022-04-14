@@ -42,7 +42,7 @@ const NoteInfoSide = () => {
             <div>
             {notesArr.map((note) => (
                 <ul className="item-container" key={note.id}>
-                    <a href= {`/notes/${note.id}`} key={note.id + "a"}>
+                    <a href= {`/notes/${note.id}`}>
                         <li>
                             <div>{note.title}</div>
                             <div>{note.content}</div>
