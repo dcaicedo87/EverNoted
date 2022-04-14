@@ -73,4 +73,11 @@ small {
 
 .edit-form-content {
     background-color: white;
+    min-width: 100%;
+    height: 80vh;
+}
+
+.edit-form-button-container {
+    display: flex;
+    justify-content: space-between;
 }

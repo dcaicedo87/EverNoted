@@ -26,9 +26,6 @@ const NoteInfoEdit = () => {
 
     return (
         <>
-            {/* <button>
-                DELETE
-            </button> */}
             <div>
                 <form >
                 {/* <div>
@@ -41,7 +38,7 @@ const NoteInfoEdit = () => {
                     name='title'
                     type='text'
                     placeholder='Title'
-                      value={currentNote?.title}
+                    value={currentNote?.title}
                     //   onChange={}
                     />
                 </div>
@@ -50,7 +47,7 @@ const NoteInfoEdit = () => {
                     className="edit-form-content"
                     name='content'
                     placeholder='Content'
-                      value={currentNote?.content}
+                    value={currentNote?.content}
                     //   onChange={updatePassword}
                     />
                 </div>
@@ -61,11 +58,9 @@ const NoteInfoEdit = () => {
                     value={userId}
                     />
                 </div>
-                <div>
+                <div className="edit-form-button-container">
                     <button type='submit'>Save</button>
-                </div>
-                <div>
-                    <button>DELETE</button>
+                    <button>DELETE NOTE</button>
                 </div>
                 </form>
             </div>
