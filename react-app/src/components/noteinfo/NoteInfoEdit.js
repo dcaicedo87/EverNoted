@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { editNoteThunk } from '../../store/note';
@@ -7,20 +7,15 @@ import { editNoteThunk } from '../../store/note';
 const NoteInfoEdit = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    console.log(`SESSION USER:`, sessionUser)
+    const { noteId } = useParams();
+    console.log(noteId)
+
+    const [title, setTitle] = useState(sessionUser.notes[noteId].title);
+    const [content, setContent] = useState(sessionUser.notes[noteId].content);
+
     const userId = sessionUser.id;
     console.log(`USER ID:`, userId) // console for user id
-
-    const notesObj = useSelector(state => state.notes)
-    console.log(`NOTES OBJ****`, notesObj)
-
-    let note_id = useParams().noteId;
-    // console.log("NOTE ID", note_id)
-
-    const currentNote = notesObj[note_id]
-    console.log(`Current Note:`, currentNote)
-
-    const [title, setTitle] = useState(notesObj[note_id]?.title);
-    const [content, setContent] = useState(notesObj[note_id]?.content);
 
 
 
@@ -28,7 +23,7 @@ const NoteInfoEdit = () => {
     const handleSubmit = e => {
         e.preventDefault();
         let updatedNote = {
-          id: currentNote.id,
+          id: noteId,
           title,
           content,
           user_id: userId,
@@ -48,7 +43,7 @@ const NoteInfoEdit = () => {
         //   return;
         // }
 
-        dispatch(editNoteThunk(userId, currentNote.id, updatedNote))
+        // dispatch(editNoteThunk(userId, currentNote.id, updatedNote))
         // dispatch(editReviewThunk(updatedReview));
         // window.location.reload(false);
       };
