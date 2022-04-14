@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { editNoteThunk } from '../../store/note';
+import { deleteNoteThunk, editNoteThunk } from '../../store/note';
 
 
 const NoteInfoEdit = () => {
@@ -19,6 +19,10 @@ const NoteInfoEdit = () => {
 
     const userId = sessionUser.id;
     console.log(`USER ID:`, userId) // console for user id
+
+    const deleteNote = noteId => {
+        dispatch(deleteNoteThunk(noteId));
+    };
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -44,10 +48,8 @@ const NoteInfoEdit = () => {
         // }
 
         dispatch(editNoteThunk(noteId, updatedNote))
-        // dispatch(editReviewThunk(updatedReview));
-        // window.location.reload(false);
         history.push(`/notes/${noteId}`)
-      };
+    };
 
 
     return (
@@ -79,7 +81,7 @@ const NoteInfoEdit = () => {
                 </div>
                 <div className="edit-form-button-container">
                     <button type='submit'>Save</button>
-                    <button>DELETE NOTE</button>
+                    <button onClick={() => deleteNote(noteId)}>DELETE NOTE</button>
                 </div>
                 </form>
             </div>

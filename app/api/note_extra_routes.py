@@ -31,6 +31,13 @@ def edit_note(note_id):
     db.session.commit()
     return note.to_dict()
 
+@note_extra_routes.route('/<int:note_id>/delete', methods=['DELETE'])
+def delete_note(note_id):
+    deleted_note = Note.query.filter(Note.id == note_id).first()
+    db.session.delete(deleted_note)
+    db.session.commit()
+    return {"deleted_note": deleted_note.to_dict()}
+
 # @note_routes.route('/notes/<int:note_id>/edit', methods=['PUT'])
 # def edit_note(note_id):
 #     form = EditNoteForm()

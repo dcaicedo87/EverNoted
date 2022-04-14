@@ -1,6 +1,7 @@
 const GET_ALL_NOTES = "notes/all"
 const CREATE_NOTE = "note/create"
 const EDIT_NOTE = "note/edit"
+const DELETE_NOTE = "note/delete"
 
 
 const getAllNotes = notes => {
@@ -21,6 +22,13 @@ const editNote = note => {
     return {
         type: EDIT_NOTE,
         note
+    }
+}
+
+const deleteNote = note => {
+    return {
+        type: DELETE_NOTE,
+        note,
     }
 }
 
@@ -71,6 +79,18 @@ export const editNoteThunk = (noteId, note) => async dispatch => {
     const updateNote = await res.json();
     dispatch(editNote(updateNote));
     return updateNote;
+};
+
+export const deleteNoteThunk = noteId => async dispatch => {
+    const res = await fetch(`/api/notes/${noteId}/delete`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      dispatch(deleteNote(noteId));
+      return data;
+    }
   };
 
 //reducer
@@ -90,6 +110,9 @@ const noteReducer = (state = initialState, action) => {
         return newState;
     case EDIT_NOTE:
         newState[action.note.id] = action.note;
+        return newState;
+    case DELETE_NOTE:
+        delete newState[action.id];
         return newState;
     default:
       return state;
