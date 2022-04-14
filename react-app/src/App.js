@@ -9,7 +9,9 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import NoteInfoSide from './components/noteinfo/NoteInfoSide';
-import NoteInfoPage from './components/noteinfo/NoteInfoPage';
+// import NoteInfoPage from './components/noteinfo/NoteInfoPage';
+import NoteInfoEdit from './components/noteinfo/NoteInfoEdit';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,7 +48,7 @@ function App() {
           <ProtectedRoute path='/notes/:noteId' exact={true} >
             <>
               <NoteInfoSide />
-              <NoteInfoPage />
+              <NoteInfoEdit />
             </>
           </ProtectedRoute>
           <ProtectedRoute path="/notes" exact={true}>

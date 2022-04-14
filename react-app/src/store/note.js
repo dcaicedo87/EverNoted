@@ -56,6 +56,9 @@ const noteReducer = (state = initialState, action) => {
         note => (newState[note.id] = note)
       );
       return newState;
+    case CREATE_NOTE:
+        newState[action.note.id] = action.note;
+        return newState;
     default:
       return state;
   }

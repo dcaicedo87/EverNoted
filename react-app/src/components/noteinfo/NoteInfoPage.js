@@ -14,7 +14,7 @@ const NoteInfoPage = () => {
     const currentNote = notesObj[note_id]
     // console.log(`Current Note:`, currentNote)
 
-    const notesArr = Object.values(notesObj)
+    // const notesArr = Object.values(notesObj)
     // console.log(`notes ARR:`, notesArr)
 
     return (
