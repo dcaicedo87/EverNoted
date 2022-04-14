@@ -70,3 +70,7 @@ small {
 .item-container a li {
     list-style-type: none;
 }
+
+.edit-form-content {
+    background-color: white;
+}

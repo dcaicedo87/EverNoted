@@ -1,5 +1,6 @@
 from flask import Blueprint
 from app.models import db, Note
+from app.forms.edit_note_form import EditNoteForm
 
 
 note_routes = Blueprint("notes", __name__)
@@ -17,3 +18,15 @@ def create_note(user_id):
     db.session.add(new_note)
     db.session.commit()
     return new_note.to_dict()
+
+@note_routes.route('/notes/<int:note_id>')
+def edit_note(note_id):
+    form = EditNoteForm()
+    note = Note.query.get(form.data['id'])
+    note.title = form.data["title"]
+    note.content = form.data["content"]
+    note.user_id = form.data["user_id"]
+
+    db.session.add(note)
+    db.session.commit()
+    return note.to_dict()
