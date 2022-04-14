@@ -29,7 +29,9 @@ const NoteInfoSide = () => {
         dispatch(getAllUserNotesThunk(userId))
     }, [dispatch, userId]);
 
-
+    //function to sort updated_at
+    // const sortedNotesArr = notesArr.sort();
+    // console.log(sortedNotesArr);
 
     return (
         <div className="index-note">
@@ -40,7 +42,7 @@ const NoteInfoSide = () => {
             <div>
             {notesArr.map((note) => (
                 <ul className="item-container" key={note.id}>
-                    <a href= {`/notes/${note.id}`}>
+                    <a href= {`/notes/${note.id}`} key={note.id + "a"}>
                         <li>
                             <div>{note.title}</div>
                             <div>{note.content}</div>

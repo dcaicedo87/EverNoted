@@ -62,8 +62,8 @@ export const createNoteThunk = (userId) => async dispatch => {
     }
 }
 
-export const editNoteThunk = (userId, noteId, note) => async dispatch => {
-    const res = await fetch(`/api/users/${userId}/notes/${noteId}`, {
+export const editNoteThunk = (noteId, note) => async dispatch => {
+    const res = await fetch(`/api/notes/${noteId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(note),
@@ -82,10 +82,13 @@ const noteReducer = (state = initialState, action) => {
     case GET_ALL_NOTES:
       newState = {};
       action.notes.notes.forEach(
-        note => (newState[note.id] = note)
+        note => (newState[note.updated_at] = note)
       );
       return newState;
     case CREATE_NOTE:
+        newState[action.note.id] = action.note;
+        return newState;
+    case EDIT_NOTE:
         newState[action.note.id] = action.note;
         return newState;
     default:

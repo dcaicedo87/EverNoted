@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { editNoteThunk } from '../../store/note';
 
 
@@ -8,8 +8,11 @@ const NoteInfoEdit = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     console.log(`SESSION USER:`, sessionUser)
+
+    const history = useHistory();
+
     const { noteId } = useParams();
-    console.log(noteId)
+    console.log(`NOTE ID:`, noteId)
 
     const [title, setTitle] = useState(sessionUser.notes[noteId].title);
     const [content, setContent] = useState(sessionUser.notes[noteId].content);
@@ -17,17 +20,14 @@ const NoteInfoEdit = () => {
     const userId = sessionUser.id;
     console.log(`USER ID:`, userId) // console for user id
 
-
-
-
     const handleSubmit = e => {
         e.preventDefault();
         let updatedNote = {
-          id: noteId,
+          id: parseInt(noteId),
           title,
           content,
-          user_id: userId,
         };
+        console.log(`UPDATE NOTE:`, updatedNote)
 
         //error validation
         // setErrors([])
@@ -43,9 +43,10 @@ const NoteInfoEdit = () => {
         //   return;
         // }
 
-        // dispatch(editNoteThunk(userId, currentNote.id, updatedNote))
+        dispatch(editNoteThunk(noteId, updatedNote))
         // dispatch(editReviewThunk(updatedReview));
         // window.location.reload(false);
+        history.push(`/notes/${noteId}`)
       };
 
 
@@ -57,13 +58,6 @@ const NoteInfoEdit = () => {
                     {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                     ))}
-                </div> */}
-                {/* <div>
-                    <input
-                    name='user_id'
-                    type='hidden'
-                    value={userId}
-                    />
                 </div> */}
                 <div>
                     <input

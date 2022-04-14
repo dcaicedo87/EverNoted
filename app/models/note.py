@@ -11,7 +11,8 @@ class Note(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     notebook_id = db.Column(db.Integer, db.ForeignKey("notebooks.id", ondelete="CASCADE"))
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now(), nullable=False) # ask david if timezone=True is needed...
+    updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False) # ask david if timezone=True is needed...
+
 
     user = db.relationship("User", back_populates="notes")
     notebook = db.relationship("Notebook", back_populates="notes")
