@@ -1,0 +1,8 @@
+.notebook-index-conatiner {
+    background-color: grey;
+    color: white;
+}
+
+.notebooks-index-notebooks-info {
+    display: flex;
+}
