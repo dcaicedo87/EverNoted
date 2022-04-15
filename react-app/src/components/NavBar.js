@@ -11,7 +11,6 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  // const userId = sessionUser?.id;
 
   const handleNewNote = async e => {
     if (!sessionUser.id) return;
@@ -31,11 +30,6 @@ const NavBar = () => {
           <button onClick={handleNewNote}>ADD NOTE</button>
         </div>
         <ul>
-          <li>
-            <NavLink to='/' exact={true} activeClassName='active'>
-              Home
-            </NavLink>
-          </li>
           <li>
             <NavLink to='/notes' exact={true} activeClassName='active'>
               All Notes

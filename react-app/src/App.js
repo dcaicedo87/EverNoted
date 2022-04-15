@@ -9,7 +9,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import NoteInfoSide from './components/noteinfo/NoteInfoSide';
-// import NoteInfoPage from './components/noteinfo/NoteInfoPage';
 import NoteInfoEdit from './components/noteinfo/NoteInfoEdit';
 
 
@@ -54,8 +53,11 @@ function App() {
           <ProtectedRoute path="/notes" exact={true}>
             <NoteInfoSide />
           </ProtectedRoute>
+          <ProtectedRoute path="/notebooks" exact={true}>
+            <h1>You're here...</h1>
+          </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >
-            <h1>SPLASH PAGE (route="/")</h1>
+            <LoginForm />
           </ProtectedRoute>
         </Switch>
       </BrowserRouter>
