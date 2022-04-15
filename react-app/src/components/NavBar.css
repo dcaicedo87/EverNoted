@@ -20,11 +20,43 @@
     cursor: pointer;
     display: inline-block;
     margin: 0 auto;
-    padding: 0.9rem 2.5rem;
+    padding: 0.5rem 2.7rem;
     text-align: center;
     background-color: #03bd03;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 20px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
     font-size: 17px;
+}
+
+.navbar-username-container {
+    margin-bottom: 1rem;
+}
+
+/* .navbar-add-button-container {
+    margin-bottom: 1rem;
+} */
+
+.navbar-logout-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem;
+    text-align: center;
+    background-color: #bd03b7;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 17px;
+    /* margin-top: 1rem; */
+}
+
+.navbar-list-container {
+    margin-top: 2rem;
+}
+
+.navbar-list-container li {
+    margin-bottom: 2rem;
 }
