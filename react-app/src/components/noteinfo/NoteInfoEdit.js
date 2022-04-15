@@ -60,7 +60,7 @@ const NoteInfoEdit = () => {
 
     return (
         <>
-            <div>
+            <div className='edit-form-container'>
                 <form onSubmit={handleSubmit}>
                 {/* <div>
                     {errors.map((error, ind) => (
@@ -69,6 +69,7 @@ const NoteInfoEdit = () => {
                 </div> */}
                 <div>
                     <input
+                    className='edit-form-title'
                     name='title'
                     type='text'
                     placeholder='Title'
@@ -86,10 +87,12 @@ const NoteInfoEdit = () => {
                     />
                 </div>
                 <div className="edit-form-button-container">
-                    <button type='submit'>Save</button>
+                    <button className="edit-form-button-save" type='submit'>Save</button>
                 </div>
                 </form>
-                    <button onClick={() => deleteNote(noteId)}>DELETE NOTE</button>
+                <div className='edit-delete-button-container'>
+                    <button className="edit-delete-button" onClick={() => deleteNote(noteId)}>DELETE NOTE</button>
+                </div>
             </div>
         </>
       );

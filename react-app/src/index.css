@@ -85,8 +85,10 @@ small {
 
 .edit-form-content {
     background-color: white;
-    min-width: 100%;
+    width: 99.9%;
     height: 80vh;
+    font-size: 150%;
+    resize: none;
 }
 
 .edit-form-button-container {
@@ -95,6 +97,21 @@ small {
 }
 
 .item-container-info-content {
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;
+    /* fallback */
+    max-height: 32px;
+    /* fallback */
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.item-container-info-title {
+    font-size: 1.2em;
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -129,4 +146,48 @@ small {
     width: 19.7rem;
     background-color: rgb(26, 26, 26);
     border: 0.1rem solid white;
+}
+
+.edit-form-title {
+    width: 99.5%;
+    font-size: 250%;
+    margin-bottom: 0.1rem;
+}
+
+.edit-form-button-save {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.9rem 2.5rem;
+    text-align: center;
+    background-color: #03bd03;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 17px;
+}
+
+.edit-delete-button-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.edit-delete-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.9rem 2.5rem;
+    text-align: center;
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 17px;
 }
