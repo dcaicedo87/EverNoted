@@ -59,17 +59,28 @@ small {
 
 .index-note {
     display: flex;
-    height: 100%;
+    height: 100vh;
     width: 350px;
     flex-direction: column;
     background-color: #1a1a1a73;
     color: white;
     border-right: 1px solid #000000;
     overflow-y: scroll;
+    /* padding: 1rem; */
 }
 
 .item-container a li {
     list-style-type: none;
+    padding: 1rem;
+}
+
+.item-container a li div {
+    list-style-type: none;
+    margin: 0.5rem;
+}
+
+.item-container {
+    border: .01rem solid;
 }
 
 .edit-form-content {
@@ -81,4 +92,32 @@ small {
 .edit-form-button-container {
     display: flex;
     justify-content: space-between;
+}
+
+.item-container-info-content {
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;
+    /* fallback */
+    max-height: 32px;
+    /* fallback */
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.index-note-header {
+    font-size: 3rem;
+}
+
+.index-note-count {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.index-note-item-container {
+    display: flex;
+    flex-direction: column-reverse;
 }

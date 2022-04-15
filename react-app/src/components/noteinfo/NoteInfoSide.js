@@ -33,17 +33,19 @@ const NoteInfoSide = () => {
     return (
         <div className="index-note">
             <div>
-                <h1>NOTES</h1>
+                <div className="index-note-header">
+                    <h1>NOTES</h1>
+                </div>
+                <div className='index-note-count'>{`${notesArr.length} Notes`}</div>
             </div>
-            <div>{`${notesArr.length} Notes`}</div>
-            <div>
+            <div className='index-note-item-container'>
             {notesArr.map((note, idx) => (
                 <ul className="item-container" key={idx}>
-                    <a href= {`/notes/${note.id}`}>
+                    <a href= {`/notes/${note.id}`} className="item-container-info">
                         <li>
-                            <div>{note.title}</div>
-                            <div>{note.content}</div>
-                            <div>{note.updated_at}</div>
+                            <div className="item-container-info-title">{note.title}</div>
+                            <div className="item-container-info-content">{note.content}</div>
+                            <div className="item-container-info-update">{note.updated_at}</div>
                         </li>
                     </a>
                 </ul>
