@@ -23,11 +23,11 @@ const NavBar = () => {
   return (
     <div>
       <nav className="navbar-container">
-        <div>
+        <div className="navbar-username">
           <h1>{sessionUser?.username}</h1>
         </div>
-        <div>
-          <button onClick={handleNewNote}>ADD NOTE</button>
+        <div className="navbar-add-button-container">
+          <button className="navbar-add-button" onClick={handleNewNote}>ADD NOTE</button>
         </div>
         <ul>
           <li>
@@ -35,11 +35,11 @@ const NavBar = () => {
               All Notes
             </NavLink>
           </li>
-          <NavLink to='/notebooks' exact={true} activeClassName='active'>
+          <NavLink className="nav-bar-links" to='/notebooks' exact={true} activeClassName='active'>
             Notebooks
           </NavLink>
           <li>
-            <NavLink to='/tags' exact={true} activeClassName='active'>
+            <NavLink className="nav-bar-links" to='/tags' exact={true} activeClassName='active'>
               Tags
             </NavLink>
           </li>
