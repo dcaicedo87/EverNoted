@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 from app.models import db, Note
 from app.forms.edit_note_form import EditNoteForm
 
@@ -22,7 +22,8 @@ def delete_note(note_id):
     deleted_note = Note.query.filter(Note.id == note_id).first()
     db.session.delete(deleted_note)
     db.session.commit()
-    return {"deleted_note": deleted_note.to_dict()}
+    # return {"deleted_note": deleted_note.to_dict()}
+    return jsonify(deleted_note.id)
 
 # @note_routes.route('/notes/<int:note_id>/edit', methods=['PUT'])
 # def edit_note(note_id):

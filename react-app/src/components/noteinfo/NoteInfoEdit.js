@@ -7,16 +7,22 @@ import { getAllUserNotesThunk } from '../../store/note';
 
 const NoteInfoEdit = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     console.log(`SESSION USER:`, sessionUser)
 
-    const history = useHistory();
+    const sessionNotes = useSelector((state) => state.notes)
+
 
     const { noteId } = useParams();
     console.log(`NOTE ID:`, noteId)
 
+    // create a noteArr from the side panel and then a useEffect to check it's state
+    // const noteArr = useSelector(state => )
     const [title, setTitle] = useState(sessionUser.notes[noteId]?.title);
     const [content, setContent] = useState(sessionUser.notes[noteId]?.content);
+
+    // const [sum, setSum] = useState(-1)
 
     const userId = sessionUser.id;
     console.log(`USER ID:`, userId) // console for user id
@@ -53,6 +59,10 @@ const NoteInfoEdit = () => {
         // dispatch(getAllUserNotesThunk(userId)) // for possible refresh to side panel.
         history.push(`/notes`)
     };
+
+    // useeffect and add the noteArray to check for the state
+    // useEffect(() => {})
+
 
     useEffect(() => {
         dispatch(getAllUserNotesThunk(userId))

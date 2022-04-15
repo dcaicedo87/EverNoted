@@ -25,10 +25,10 @@ const editNote = note => {
     }
 }
 
-const deleteNote = note => {
+const deleteNote = noteId => {
     return {
         type: DELETE_NOTE,
-        note,
+        noteId,
     }
 }
 
@@ -76,9 +76,9 @@ export const editNoteThunk = (noteId, note) => async dispatch => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(note),
     });
-    const updateNote = await res.json();
-    dispatch(editNote(updateNote));
-    return updateNote;
+    const updatedNote = await res.json();
+    dispatch(editNote(updatedNote));
+    return updatedNote;
 };
 
 export const deleteNoteThunk = noteId => async dispatch => {
@@ -87,9 +87,9 @@ export const deleteNoteThunk = noteId => async dispatch => {
     });
 
     if (res.ok) {
-      const data = await res.json();
-      dispatch(deleteNote(noteId));
-      return data;
+      const deletedNoteId = await res.json();
+      dispatch(deleteNote(deletedNoteId));
+      return deletedNoteId;
     }
   };
 
@@ -102,7 +102,7 @@ const noteReducer = (state = initialState, action) => {
     case GET_ALL_NOTES:
       newState = {};
       action.notes.notes.forEach(
-        note => (newState[note.updated_at] = note)
+        note => (newState[note.id] = note)
       );
       return newState;
     case CREATE_NOTE:
@@ -112,7 +112,7 @@ const noteReducer = (state = initialState, action) => {
         newState[action.note.id] = action.note;
         return newState;
     case DELETE_NOTE:
-        delete newState[action.id];
+        delete newState[action.noteId];
         return newState;
     default:
       return state;
