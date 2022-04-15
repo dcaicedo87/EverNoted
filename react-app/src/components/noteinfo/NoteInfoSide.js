@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -10,6 +10,8 @@ const NoteInfoSide = () => {
 
     // const [notes, setNotes] = useState();
 
+    // const [sum, setSum] = useState(-1)
+
 
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
@@ -17,13 +19,8 @@ const NoteInfoSide = () => {
 
 
     const notesArr = useSelector(state => Object.values(state.notes))
-    // console.log(notesArr) // console for notes array
 
-    let sum = 0;
-
-    for (let i = 0; i < notesArr.length; i++) {
-        sum += 1
-    }
+    // write helper function to order by correct.
 
     useEffect(() => {
         dispatch(getAllUserNotesThunk(userId))
@@ -38,7 +35,7 @@ const NoteInfoSide = () => {
             <div>
                 <h1>NOTES</h1>
             </div>
-            <div>{`${sum} Notes`}</div>
+            <div>{`${notesArr.length} Notes`}</div>
             <div>
             {notesArr.map((note, idx) => (
                 <ul className="item-container" key={idx}>
