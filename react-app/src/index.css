@@ -65,6 +65,7 @@ small {
     background-color: #1a1a1a73;
     color: white;
     border-right: 1px solid #000000;
+    overflow-y: scroll;
 }
 
 .item-container a li {

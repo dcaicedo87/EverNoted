@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import NoteInfoSide from './components/noteinfo/NoteInfoSide';
 import NoteInfoEdit from './components/noteinfo/NoteInfoEdit';
+import NotebookIndex from './components/notebookinfo/NotebookIndex';
 
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
             <NoteInfoSide />
           </ProtectedRoute>
           <ProtectedRoute path="/notebooks" exact={true}>
-            <h1>You're here...</h1>
+            <NotebookIndex />
           </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >
             <LoginForm />
