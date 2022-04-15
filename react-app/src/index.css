@@ -120,4 +120,13 @@ small {
 .index-note-item-container {
     display: flex;
     flex-direction: column-reverse;
+    margin-top: 7.8rem;
+}
+
+.index-note-header-container {
+    position: fixed;
+    padding: 1rem;
+    width: 19.7rem;
+    background-color: rgb(26, 26, 26);
+    border: 0.1rem solid white;
 }

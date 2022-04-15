@@ -32,7 +32,7 @@ const NoteInfoSide = () => {
 
     return (
         <div className="index-note">
-            <div>
+            <div className="index-note-header-container">
                 <div className="index-note-header">
                     <h1>NOTES</h1>
                 </div>
