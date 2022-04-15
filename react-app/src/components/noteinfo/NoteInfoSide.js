@@ -40,8 +40,8 @@ const NoteInfoSide = () => {
             </div>
             <div>{`${sum} Notes`}</div>
             <div>
-            {notesArr.map((note) => (
-                <ul className="item-container" key={note.id}>
+            {notesArr.map((note, idx) => (
+                <ul className="item-container" key={idx}>
                     <a href= {`/notes/${note.id}`}>
                         <li>
                             <div>{note.title}</div>
