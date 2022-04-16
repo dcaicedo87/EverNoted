@@ -16,7 +16,7 @@ import NotebookIndex from './components/notebookinfo/NotebookIndex';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector(state => state.session.user)
-  console.log(`APP SESSION USER:`, sessionUser)
+  // console.log(`APP SESSION USER:`, sessionUser)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
   }
 
   return (
-    <div className="main-container">
+    <div className="main-container" id="user-signup">
       <BrowserRouter>
         <UserNavBar />
         <Switch>
