@@ -33,40 +33,40 @@ const LoginForm = () => {
 
   return (
     <>
-      <div>
         <div id="bg-login"></div>
-        <form onSubmit={onLogin}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
-          <div>
-            <label htmlFor='email'>Email</label>
-            <input
-              name='email'
-              type='text'
-              placeholder='Email'
-              value={email}
-              onChange={updateEmail}
-            />
-          </div>
-          <div>
-            <label htmlFor='password'>Password</label>
-            <input
-              name='password'
-              type='password'
-              placeholder='Password'
-              value={password}
-              onChange={updatePassword}
-            />
-            <button type='submit'>Login</button>
-          </div>
-        </form>
-        <div className="login-footer">
-          <h1>GitHub</h1>
+        <div className="login-container">
+          <form onSubmit={onLogin}>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
+            <div>
+              <label htmlFor='email'>Email</label>
+              <input
+                name='email'
+                type='text'
+                placeholder='Email'
+                value={email}
+                onChange={updateEmail}
+              />
+            </div>
+            <div>
+              <label htmlFor='password'>Password</label>
+              <input
+                name='password'
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={updatePassword}
+              />
+              <button type='submit'>Login</button>
+            </div>
+          </form>
         </div>
-      </div>
+          <div className="login-footer">
+            <h1>GitHub</h1>
+          </div>
     </>
   );
 };
