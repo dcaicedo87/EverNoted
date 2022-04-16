@@ -39,40 +39,42 @@ function App() {
   }
 
   return (
-    <div className="main-container" id="user-signup">
-      <BrowserRouter>
-        <UserNavBar />
-        <Switch>
-          <Route path='/login' exact={true}>
-            <LoginForm />
-          </Route>
-          <Route path='/sign-up' exact={true}>
-            <SignUpForm />
-          </Route>
-          <ProtectedRoute path='/users' exact={true} >
-            <UsersList/>
-          </ProtectedRoute>
-          <ProtectedRoute path='/users/:userId' exact={true} >
-            <User />
-          </ProtectedRoute>
-          <ProtectedRoute path='/notes/:noteId' exact={true} >
-            <>
+    <>
+      <div className={`main-container${!sessionUser ? "-login": ""}`}>
+        <BrowserRouter>
+          <UserNavBar />
+          <Switch>
+            <Route path='/login' exact={true}>
+              <LoginForm />
+            </Route>
+            <Route path='/sign-up' exact={true}>
+              <SignUpForm />
+            </Route>
+            <ProtectedRoute path='/users' exact={true} >
+              <UsersList/>
+            </ProtectedRoute>
+            <ProtectedRoute path='/users/:userId' exact={true} >
+              <User />
+            </ProtectedRoute>
+            <ProtectedRoute path='/notes/:noteId' exact={true} >
+              <>
+                <NoteInfoSide />
+                <NoteInfoEdit />
+              </>
+            </ProtectedRoute>
+            <ProtectedRoute path="/notes" exact={true}>
               <NoteInfoSide />
-              <NoteInfoEdit />
-            </>
-          </ProtectedRoute>
-          <ProtectedRoute path="/notes" exact={true}>
-            <NoteInfoSide />
-          </ProtectedRoute>
-          <ProtectedRoute path="/notebooks" exact={true}>
-            <NotebookIndex />
-          </ProtectedRoute>
-          <ProtectedRoute path='/' exact={true} >
-            <LoginForm />
-          </ProtectedRoute>
-        </Switch>
-      </BrowserRouter>
-    </div>
+            </ProtectedRoute>
+            <ProtectedRoute path="/notebooks" exact={true}>
+              <NotebookIndex />
+            </ProtectedRoute>
+            <ProtectedRoute path='/' exact={true} >
+              <LoginForm />
+            </ProtectedRoute>
+          </Switch>
+        </BrowserRouter>
+      </div>
+    </>
   );
 }
 
