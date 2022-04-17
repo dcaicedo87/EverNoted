@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import './NotebookIndex.css'
 
 
 
@@ -8,8 +9,8 @@ const NotebookIndex = () => {
 
     return (
         <div className="notebook-index-container">
-            <div className="notebook-index-header">
-                <h1>Notebooks</h1>
+            <div className="notebook-index-header-container">
+                <p>Notebooks</p>
                 <div className="notebooks-index-notebooks-info">
                     <h2># notebooks</h2>
                     <button className="notebooks-index-notebooks-button">
@@ -17,20 +18,30 @@ const NotebookIndex = () => {
                     </button>
                 </div>
             </div>
-            <div className="notebooks-index-list">
-                <ul>
-                    <li>
-                        <div className="index-list-title"> TITLE</div>
-                        <div className="index-list-created">CREATED BY</div>
-                        <div className="index-list-updated">UPDATED</div>
-                        <div className="index-list-actions">ACTIONS</div>
-                    </li>
-                    <li>test2</li>
-                    <li>test3</li>
-                    <li>test4</li>
-                    <li>test5</li>
-                    <li>test6</li>
-                </ul>
+            <div className="notebooks-index-list-contanier">
+                <div>
+                    <ul className="index-list-labels-container">
+                        <li className='index-list-labels'>
+                            <div className="index-list-labels-title"> TITLE</div>
+                            <div className="index-list-labels-created">CREATED BY</div>
+                            <div className="index-list-labels-updated">UPDATED</div>
+                            <div className="index-list-labels-actions">ACTIONS</div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul className="index-list-values-container">
+                        <li className="index-list-values">
+                            <div className="index-list-values-title">First Notebook</div>
+                            <div className="index-list-values-created">Demo</div>
+                            <div className="index-list-values-updated">Updated</div>
+                            <div className="index-list-values-btns-container">
+                                <button className="notebooks-edit">Edit Name</button>
+                                <button className="notebooks-delete">Delete</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     )

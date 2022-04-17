@@ -1,8 +1,123 @@
-.notebook-index-conatiner {
-    background-color: grey;
-    color: white;
+.notebook-index-container {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    /* color: white; */
+    /* width: 100vw; */
+    width: 60vw;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    margin-right: 20rem;
+    padding: 3%;
+    border-radius: 20px;
 }
 
 .notebooks-index-notebooks-info {
     display: flex;
+    /* flex-direction: row; */
+}
+
+.notebooks-index-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.index-list-values {
+    display: flex;
+    /* flex-direction: row; */
+}
+
+.notebook-index-header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(29, 29, 29, 0.5);
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 4rem;
+    padding: 3%;
+}
+
+.notebook-index-header-container p {
+    font-size: x-large;
+}
+
+.notebooks-index-notebooks-info {
+    justify-content: space-between;
+}
+
+.index-list-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 1%;
+}
+
+.index-list-values-container {
+    padding: 1%;
+    border-bottom: 1px solid;
+}
+
+.index-list-values {
+    display: grid;
+    /* justify-content: space-around; */
+    grid-template-columns: 1fr 1fr 1fr 1fr
+}
+
+.notebooks-edit {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: .3s;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    min-width: 6rem;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    /* padding: 17px 48px; */
+    color: #fff;
+    background-color: #abae07;
+    /* height: 48px; */
+}
+
+.notebooks-delete {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: .3s;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    min-width: 6rem;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    /* padding: 17px 48px; */
+    color: #fff;
+    background-color: #d71e1e;
+    /* height: 48px; */
+
+}
+
+.index-list-values-btns-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.index-list-labels-container {
+    border: 1px solid;
+}
+
+.index-list-labels-actions {
+    /* text-align: center; */
 }
