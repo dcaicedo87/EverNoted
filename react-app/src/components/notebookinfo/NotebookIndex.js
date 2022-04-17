@@ -1,11 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllUserNotebooksThunk } from '../../store/notebook';
 import './NotebookIndex.css'
 
 
 
 const NotebookIndex = () => {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const userId = sessionUser.id;
+    console.log(`Session User Name:`, sessionUser)
+
+    const notebooksArr = useSelector(state => Object.values(state.notebooks))
+    console.log(`NOTEBOOKS ARRAY:`, notebooksArr)
+
+
+    useEffect(() => {
+        dispatch(getAllUserNotebooksThunk(userId))
+    }, [dispatch, userId]);
+
 
     return (
         <div className="notebook-index-container">
@@ -30,17 +43,19 @@ const NotebookIndex = () => {
                     </ul>
                 </div>
                 <div>
-                    <ul className="index-list-values-container">
-                        <li className="index-list-values">
-                            <div className="index-list-values-title">First Notebook</div>
-                            <div className="index-list-values-created">Demo</div>
-                            <div className="index-list-values-updated">Updated</div>
-                            <div className="index-list-values-btns-container">
-                                <button className="notebooks-edit">Edit Name</button>
-                                <button className="notebooks-delete">Delete</button>
-                            </div>
-                        </li>
-                    </ul>
+                    {notebooksArr.map((notebook, idx) => (
+                        <ul className="index-list-values-container" key={idx}>
+                            <li className="index-list-values">
+                                <div className="index-list-values-title">{notebook.title}</div>
+                                <div className="index-list-values-created">{sessionUser.username}</div>
+                                <div className="index-list-values-updated">{notebook.updated_at}</div>
+                                <div className="index-list-values-btns-container">
+                                    <button className="notebooks-edit">Edit Name</button>
+                                    <button className="notebooks-delete">Delete</button>
+                                </div>
+                            </li>
+                        </ul>
+                    ))}
                 </div>
             </div>
         </div>
