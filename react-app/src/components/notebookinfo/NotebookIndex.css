@@ -1,8 +1,17 @@
-.notebook-index-conatiner {
-    background-color: grey;
-    color: white;
+.notebook-index-container {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    /* color: white; */
+    width: 100vw;
 }
 
 .notebooks-index-notebooks-info {
     display: flex;
+    /* flex-direction: row; */
+}
+
+.notebooks-index-list {
+    display: flex;
+    flex-direction: row;
 }
