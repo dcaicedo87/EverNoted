@@ -84,7 +84,7 @@ const LoginForm = () => {
           </div>
           <div className="register-user-link-container">
               <NavLink className="register-user-link" to="/sign-up">
-                Don't have an account? Sign Up Here!
+                Don't have an account? Register here!
               </NavLink>
           </div>
         </div>
