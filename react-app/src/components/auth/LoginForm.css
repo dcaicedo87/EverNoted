@@ -1,0 +1,135 @@
+.main-container-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 100vw;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.login-footer {
+    flex-direction: flex-end;
+    justify-content: flex-end;
+    z-index: 1;
+    background-color: white;
+    width: 100%;
+    height: 4.5rem;
+    text-align: center;
+}
+
+.login-footer-name {
+    font-weight: 1000;
+    font-size: large;
+}
+
+#bg-login {
+    background-image: url("./img/texture-BG.jpg");
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    filter: brightness(50%);
+    z-index: 0;
+}
+
+.logo img {
+    position: relative;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    top: 4em;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15em;
+    margin-top: 0px;
+}
+
+.resize {
+    width: 200px;
+    height: 200px;
+    top: 0rem;
+}
+
+.login-form {
+    margin-top: 5rem;
+    width: 20rem;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* justify-content: center; */
+    align-items: center;
+    z-index: 0;
+    background-color: white;
+    width: 30rem;
+    height: 40rem;
+    top: 5rem;
+    border-radius: 20px;
+}
+
+.login-box-container {
+    z-index: 1;
+}
+
+.form-input {
+    font-family: inherit;
+    width: 100%;
+    outline: none;
+    background-color: #fff;
+    border-radius: 4px;
+    border: none;
+    display: block;
+    padding: 0.9rem 0.7rem;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 17px;
+    color: #4a4a4a;
+}
+
+.form-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.9rem 2.5rem;
+    text-align: center;
+    background-color: #068d11;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 17px;
+}
+
+.login-btn-container {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.demo-btn-container {
+    margin-top: 1rem;
+}
+
+#demo {
+    background-color: rgba(86, 2, 125, 0.479);
+    width: 3rem;
+}
+
+.register-user-link-container {
+    margin-top: 1rem;
+}
+
+#username {
+    margin-bottom: 1rem;
+}
+
+.login-footer-links {
+    margin-top: 0.5rem;
+}
