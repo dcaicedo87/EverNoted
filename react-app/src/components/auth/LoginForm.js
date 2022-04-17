@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import evernotedLogo from './img/EvernotedMk2.png'
+import githubLogo from './img/github.png'
+import linkedinLogo from './img/linkedin.png'
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -17,6 +20,14 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
+  };
+
+  const handleSubmitDemo = async (e) => {
+    e.preventDefault();
+    const demoEmail = "demo@aa.io"
+    const demoPassword = "password"
+    await dispatch(login(demoEmail, demoPassword)
+    )
   };
 
   const updateEmail = (e) => {
@@ -35,15 +46,18 @@ const LoginForm = () => {
     <>
         <div id="bg-login"></div>
         <div className="login-container">
-          <form onSubmit={onLogin}>
+          <div className="logo resize">
+            <img className="resize" src={evernotedLogo} alt="logo"></img>
+          </div>
+          <form className="login-form" onSubmit={onLogin}>
             <div>
               {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
               ))}
             </div>
             <div>
-              <label htmlFor='email'>Email</label>
-              <input
+              {/* <label htmlFor='email'>Email</label> */}
+              <input className="form-input" id="username"
                 name='email'
                 type='text'
                 placeholder='Email'
@@ -52,20 +66,40 @@ const LoginForm = () => {
               />
             </div>
             <div>
-              <label htmlFor='password'>Password</label>
-              <input
+              {/* <label htmlFor='password'>Password</label> */}
+              <input className="form-input"
                 name='password'
                 type='password'
                 placeholder='Password'
                 value={password}
                 onChange={updatePassword}
               />
-              <button type='submit'>Login</button>
+            </div>
+            <div className="login-btn-container">
+              <button className="form-button" type='submit'>Login</button>
             </div>
           </form>
+          <div className="demo-btn-container">
+              <button className="form-button" id="demo" onClick={handleSubmitDemo}>Demo</button>
+          </div>
+          <div className="register-user-link-container">
+              <NavLink className="register-user-link" to="/sign-up">
+                Don't have an account? Sign Up Here!
+              </NavLink>
+          </div>
         </div>
           <div className="login-footer">
-            <h1>GitHub</h1>
+            <div>
+              <p className='login-footer-name'>Daniel Caicedo Llano</p>
+            </div>
+            <div className='login-footer-links'>
+              <a href="https://github.com/dcaicedo87">
+                <img src={githubLogo}></img>
+              </a>
+              <a href="https://www.linkedin.com/in/daniel-caicedo-5191a254/">
+                <img src={linkedinLogo}></img>
+              </a>
+            </div>
           </div>
     </>
   );
