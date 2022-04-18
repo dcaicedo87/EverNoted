@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Notebook
+from app.models import db, Notebook, Note
 from sqlalchemy.sql import func
 
 notebook_routes = Blueprint("notebooks", __name__)
@@ -44,3 +44,8 @@ def delete_notebook(notebook_id):
     db.session.commit()
 
     return notebook.to_dict()
+
+@notebook_routes.route('/<int:notebook_id>/all')
+def get_notebook_notes(notebook_id):
+    notebook_notes_list = Note.query.filter(Note.notebook_id == notebook_id).all()
+    return {"notes": [ note.to_dict() for note in notebook_notes_list ]}

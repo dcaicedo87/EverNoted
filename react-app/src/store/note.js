@@ -2,6 +2,7 @@ const GET_ALL_NOTES = "notes/all"
 const CREATE_NOTE = "note/create"
 const EDIT_NOTE = "note/edit"
 const DELETE_NOTE = "note/delete"
+// const GET_NOTEBOOK_NOTES = "notebookNotes/all"
 
 
 const getAllNotes = notes => {
@@ -32,6 +33,13 @@ const deleteNote = noteId => {
     }
 }
 
+// const getNotebookNotes = notes => {
+//     return {
+//         type: GET_NOTEBOOK_NOTES,
+//         notes
+//     }
+// }
+
 
 //thunks
 
@@ -44,6 +52,16 @@ export const getAllUserNotesThunk = userId => async dispatch => {
         return data;
     }
 }
+
+// export const getNotebookNotesThunk = notebookId => async dispatch => {
+//     const res = await fetch(`/api/notebooks/${notebookId}/all`)
+
+//     if (res.ok) {
+//         const data = await res.json();
+//         dispatch(getNotebookNotes(data))
+//         return data;
+//     }
+// }
 
 export const getSingleUserNoteThunk = (userId, noteId) => async dispatch => {
     const res = await fetch(`/api/users/${userId}/notes/${noteId}`)
@@ -105,6 +123,12 @@ const noteReducer = (state = initialState, action) => {
         note => (newState[note.id] = note)
       );
       return newState;
+    // case GET_NOTEBOOK_NOTES:
+    //   newState = {};
+    //   action.notes.notes.forEach(
+    //     note => (newState[note.id] = note)
+    //   );
+    //   return newState;
     case CREATE_NOTE:
         newState[action.note.id] = action.note;
         return newState;

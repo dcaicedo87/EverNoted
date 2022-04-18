@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import NoteInfoSide from './components/noteinfo/NoteInfoSide';
 import NoteInfoEdit from './components/noteinfo/NoteInfoEdit';
 import NotebookIndex from './components/notebookinfo/NotebookIndex';
+import NotebookInfoSide from './components/notebookinfo/NotebookInfoSide';
 
 
 function App() {
@@ -59,6 +60,12 @@ function App() {
             <ProtectedRoute path='/notes/:noteId' exact={true} >
               <>
                 <NoteInfoSide />
+                <NoteInfoEdit />
+              </>
+            </ProtectedRoute>
+            <ProtectedRoute path='/notebooks/:notebookId' exact={true} >
+              <>
+                <NotebookInfoSide />
                 <NoteInfoEdit />
               </>
             </ProtectedRoute>
