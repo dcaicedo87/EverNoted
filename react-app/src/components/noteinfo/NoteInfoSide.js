@@ -45,7 +45,7 @@ const NoteInfoSide = () => {
                         <li>
                             <div className="item-container-info-title">{note.title}</div>
                             <div className="item-container-info-content">{note.content}</div>
-                            <div className="item-container-info-update">{note.updated_at}</div>
+                            <div className="item-container-info-update">{note.updated_at.substring(0, 15)}</div>
                         </li>
                     </a>
                 </ul>

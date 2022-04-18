@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import evernotedLogo from './img/EvernotedMk2.png'
 import githubLogo from './img/github.png'
@@ -30,6 +30,10 @@ const LoginForm = () => {
     )
   };
 
+  const altLogo = 'Evernote Logo'
+  const altGithub = 'Github Logo'
+  const altLinkedIn = 'LinkedIn Logo'
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -47,7 +51,7 @@ const LoginForm = () => {
         <div id="bg-login"></div>
         <div className="login-container">
           <div className="logo resize">
-            <img className="resize" src={evernotedLogo} alt="logo"></img>
+            <img className="resize" src={evernotedLogo} alt={altLogo}></img>
           </div>
           <form className="login-form" onSubmit={onLogin}>
             <div>
@@ -94,10 +98,10 @@ const LoginForm = () => {
             </div>
             <div className='login-footer-links'>
               <a href="https://github.com/dcaicedo87">
-                <img src={githubLogo}></img>
+                <img src={githubLogo} alt={altGithub}></img>
               </a>
               <a href="https://www.linkedin.com/in/daniel-caicedo-5191a254/">
-                <img src={linkedinLogo}></img>
+                <img src={linkedinLogo} alt={altLinkedIn}></img>
               </a>
             </div>
           </div>
