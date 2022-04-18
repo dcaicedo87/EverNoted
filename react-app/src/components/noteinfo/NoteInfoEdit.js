@@ -9,18 +9,18 @@ const NoteInfoEdit = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    console.log(`SESSION USER:`, sessionUser)
+    // console.log(`SESSION USER:`, sessionUser)
 
-    const sessionNotes = useSelector((state) => state.notes)
+    // const sessionNotes = useSelector((state) => state.notes)
 
     const { noteId } = useParams();
-    console.log(`NOTE ID:`, noteId)
+    // console.log(`NOTE ID:`, noteId)
 
     const [title, setTitle] = useState(sessionUser.notes[noteId]?.title);
     const [content, setContent] = useState(sessionUser.notes[noteId]?.content);
 
     const userId = sessionUser.id;
-    console.log(`USER ID:`, userId) // console for user id
+    // console.log(`USER ID:`, userId) // console for user id
 
     const deleteNote = noteId => {
         dispatch(deleteNoteThunk(noteId));

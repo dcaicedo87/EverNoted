@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
@@ -15,7 +14,7 @@ const NavBar = () => {
   const handleNewNote = async e => {
     if (!sessionUser.id) return;
 
-    const note = await (dispatch(createNoteThunk(sessionUser.id)))
+    await (dispatch(createNoteThunk(sessionUser.id)))
 
     history.push('/notes')
   }

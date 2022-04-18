@@ -91,7 +91,7 @@ export const deleteNoteThunk = noteId => async dispatch => {
       dispatch(deleteNote(deletedNoteId));
       return deletedNoteId;
     }
-  };
+};
 
 //reducer
 const initialState = {};
