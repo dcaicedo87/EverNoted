@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUserNotebooksThunk } from '../../store/notebook';
 import Modal from 'react-modal'; //for modal
+import CreateNotebook from './CreateNotebook';
 import './NotebookIndex.css';
 
 
@@ -28,16 +29,15 @@ const NotebookIndex = () => {
     console.log(`NOTEBOOKS ARRAY:`, notebooksArr)
 
     //modal setup
-    let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
     function openModal() {
         setIsOpen(true);
     }
 
-    function afterOpenModal() {
-        subtitle.style.color = '#f00';
-    }
+    // function afterOpenModal() {
+    //     subtitle.style.color = '#f00';
+    // }
 
     function closeModal() {
         setIsOpen(false)
@@ -65,7 +65,8 @@ const NotebookIndex = () => {
                         style={customStyles}
                         contentLabel="Example Modal"
                     >
-                        <h2>You made it!</h2>
+                        <h2>Create a Notebook</h2>
+                        <CreateNotebook />
                     </Modal>
                 </div>
             </div>
