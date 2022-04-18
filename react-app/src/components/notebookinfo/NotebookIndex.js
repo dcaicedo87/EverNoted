@@ -4,6 +4,7 @@ import { deleteNotebookThunk, getAllUserNotebooksThunk } from '../../store/noteb
 import Modal from 'react-modal'; //for modal
 import CreateNotebook from './CreateNotebook';
 import './NotebookIndex.css';
+import { NavLink } from 'react-router-dom';
 
 
 const customStyles = {
@@ -17,17 +18,6 @@ const customStyles = {
     },
 };
 
-const customStylesTwo = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-    //   transform: 'translate(-50%, -50%)',
-    },
-};
-
 Modal.setAppElement('#root')
 
 const NotebookIndex = () => {
@@ -37,12 +27,10 @@ const NotebookIndex = () => {
     // console.log(`Session User Name:`, sessionUser)
 
     const notebooksArr = useSelector(state => Object.values(state.notebooks))
-    console.log(`NOTEBOOKS ARRAY:`, notebooksArr)
+    // console.log(`NOTEBOOKS ARRAY:`, notebooksArr)
 
     //modal setup
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [modalIsOpenTwo, setIsOpenTwo] = React.useState(false);
-    const [modalId, setModalId] = React.useState();
 
     function openModal() {
         setIsOpen(true);
@@ -56,7 +44,7 @@ const NotebookIndex = () => {
         setIsOpen(false)
     }
 
-    console.log(`NOTEBOOKS!!!!!`, notebooksArr)
+    // console.log(`NOTEBOOKS!!!!!`, notebooksArr)
 
     const deleteNotebook = id => {
         dispatch(deleteNotebookThunk(id));
@@ -72,7 +60,7 @@ const NotebookIndex = () => {
             <div className="notebook-index-header-container">
                 <p>Notebooks</p>
                 <div className="notebooks-index-notebooks-info">
-                    <h2># notebooks</h2>
+                    <h3>{`${notebooksArr.length} notebooks`}</h3>
                     <button onClick={openModal} className="notebooks-index-notebooks-button">
                         New Notebook
                     </button>
@@ -94,7 +82,7 @@ const NotebookIndex = () => {
                             <div className="index-list-labels-title">TITLE</div>
                             <div className="index-list-labels-created">CREATED BY</div>
                             <div className="index-list-labels-updated">UPDATED</div>
-                            <div className="index-list-labels-actions">ACTIONS</div>
+                            <div className="index-list-labels-actions">ACTION</div>
                         </li>
                     </ul>
                 </div>
@@ -102,7 +90,9 @@ const NotebookIndex = () => {
                     {notebooksArr.map((notebook, idx) => (
                         <ul className="index-list-values-container" key={idx}>
                             <li className="index-list-values">
-                                <div className="index-list-values-title">{notebook.title}</div>
+                                <NavLink to={`/notebooks/${notebook.id}`}>
+                                    <div className="index-list-values-title">{notebook.title}</div>
+                                </NavLink>
                                 <div className="index-list-values-created">{sessionUser.username}</div>
                                 <div className="index-list-values-updated">{notebook.updated_at.substring(0, 16)}</div>
                                 <div className="index-list-values-btns-container">

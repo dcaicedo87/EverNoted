@@ -62,6 +62,12 @@ function App() {
                 <NoteInfoEdit />
               </>
             </ProtectedRoute>
+            <ProtectedRoute path='/notebooks/:noteId' exact={true} >
+              <>
+                <NoteInfoSide />
+                <NoteInfoEdit />
+              </>
+            </ProtectedRoute>
             <ProtectedRoute path="/notes" exact={true}>
               <NoteInfoSide />
             </ProtectedRoute>
