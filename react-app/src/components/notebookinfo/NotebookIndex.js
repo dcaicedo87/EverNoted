@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUserNotebooksThunk } from '../../store/notebook';
+import { deleteNotebookThunk, getAllUserNotebooksThunk } from '../../store/notebook';
 import Modal from 'react-modal'; //for modal
 import CreateNotebook from './CreateNotebook';
 import './NotebookIndex.css';
@@ -17,6 +17,17 @@ const customStyles = {
     },
 };
 
+const customStylesTwo = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+    //   transform: 'translate(-50%, -50%)',
+    },
+};
+
 Modal.setAppElement('#root')
 
 const NotebookIndex = () => {
@@ -30,6 +41,8 @@ const NotebookIndex = () => {
 
     //modal setup
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpenTwo, setIsOpenTwo] = React.useState(false);
+    const [modalId, setModalId] = React.useState();
 
     function openModal() {
         setIsOpen(true);
@@ -44,6 +57,10 @@ const NotebookIndex = () => {
     }
 
     console.log(`NOTEBOOKS!!!!!`, notebooksArr)
+
+    const deleteNotebook = id => {
+        dispatch(deleteNotebookThunk(id));
+    };
 
     useEffect(() => {
         dispatch(getAllUserNotebooksThunk(userId))
@@ -74,7 +91,7 @@ const NotebookIndex = () => {
                 <div>
                     <ul className="index-list-labels-container">
                         <li className='index-list-labels'>
-                            <div className="index-list-labels-title"> TITLE</div>
+                            <div className="index-list-labels-title">TITLE</div>
                             <div className="index-list-labels-created">CREATED BY</div>
                             <div className="index-list-labels-updated">UPDATED</div>
                             <div className="index-list-labels-actions">ACTIONS</div>
@@ -87,10 +104,10 @@ const NotebookIndex = () => {
                             <li className="index-list-values">
                                 <div className="index-list-values-title">{notebook.title}</div>
                                 <div className="index-list-values-created">{sessionUser.username}</div>
-                                <div className="index-list-values-updated">{notebook.updated_at.substring(0, 15)}</div>
+                                <div className="index-list-values-updated">{notebook.updated_at.substring(0, 16)}</div>
                                 <div className="index-list-values-btns-container">
-                                    <button className="notebooks-edit">Edit Name</button>
-                                    <button className="notebooks-delete">Delete</button>
+                                    {/* <button className="notebooks-edit">Edit Name</button> */}
+                                    <button className="notebooks-delete" onClick={() => deleteNotebook(notebook.id)}>Delete</button>
                                 </div>
                             </li>
                         </ul>
