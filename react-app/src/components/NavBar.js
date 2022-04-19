@@ -25,14 +25,14 @@ const NavBar = () => {
   // const [notebookId, setNotebookId] = useState()
   // const [noteId, setNoteId] = useState()
 
-  // const notebookIdParams = useParams();
-  // console.log(`NOTEBOOK ID STRING: `, notebookId)
-  // const notebookIdNum = parseInt(notebookId)
-  // console.log(`NOTEBOOK ID NUM: `, notebookIdNum)
-  // const noteIdParams = useParams();
-  // console.log(`NOTE ID STRING:`, notebookId)
-  // const noteIdNum = parseInt(noteId)
-  // console.log(`NOTE ID NUM: `, noteIdNum)
+  const notebookId = useParams().notebookId;
+  console.log(`NOTEBOOK ID STRING: `, notebookId)
+  const notebookIdNum = parseInt(notebookId)
+  console.log(`NOTEBOOK ID NUM: `, notebookIdNum)
+  const noteId = useParams().noteId;
+  console.log(`NOTE ID STRING:`, noteId)
+  const noteIdNum = parseInt(noteId)
+  console.log(`NOTE ID NUM: `, noteIdNum)
 
   const handleNewNote = async e => {
     if (!sessionUser.id) return;

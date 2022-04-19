@@ -46,7 +46,7 @@ function App() {
     <>
       <div className={`main-container${!sessionUser ? "-login": ""}`}>
         <BrowserRouter>
-          <UserNavBar />
+          {/* <UserNavBar /> */}
           <Switch>
             <Route path='/login' exact={true}>
               <LoginForm />
@@ -62,26 +62,31 @@ function App() {
             </ProtectedRoute>
             <ProtectedRoute path='/notes/:noteId' exact={true} >
               <>
+                <NavBar />
                 <NoteInfoSide />
                 <NoteInfoEdit />
               </>
             </ProtectedRoute>
             <ProtectedRoute path='/notebooks/:notebookId' exact={true} >
               <>
+                <NavBar />
                 <NotebookInfoSide />
                 <NoteInfoEdit />
               </>
             </ProtectedRoute>
             <ProtectedRoute path='/notebooks/:notebookId/notes/:noteId' exact={true} >
               <>
+                <NavBar />
                 <NotebookInfoSide />
                 <NotebookNoteInfoEdit />
               </>
             </ProtectedRoute>
             <ProtectedRoute path="/notes" exact={true}>
+              <NavBar />
               <NoteInfoSide />
             </ProtectedRoute>
             <ProtectedRoute path="/notebooks" exact={true}>
+              <NavBar />
               <NotebookIndex />
             </ProtectedRoute>
             <ProtectedRoute path='/' exact={true} >

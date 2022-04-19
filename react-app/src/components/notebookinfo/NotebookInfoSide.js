@@ -73,7 +73,7 @@ const NotebookInfoSide = () => {
             </div>
             <div className='index-note-item-container'>
             {filteredNotesArr.map((note, idx) => (
-                // <div className='item-container-clickable' key={idx} onClick={}>
+                <div className='item-container-clickable' key={idx}>
                     <ul className="item-container">
                         <a href= {`/notebooks/${notebookIdNum}/notes/${note.id}`} className="item-container-info">
                             <li>
@@ -83,7 +83,7 @@ const NotebookInfoSide = () => {
                             </li>
                         </a>
                     </ul>
-                // </div>
+                </div>
             ))}
             </div>
         </div>
