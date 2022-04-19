@@ -88,6 +88,21 @@ export const createNoteThunk = (userId) => async dispatch => {
     }
 }
 
+export const createNotebookNoteThunk = (notebookId, userId) => async dispatch => {
+    const res = await fetch(`/api/notebooks/${notebookId}/users/${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if (res.ok) {
+        const note = await res.json();
+        dispatch(createNote(note));
+        return note;
+    }
+}
+
 export const editNoteThunk = (noteId, note) => async dispatch => {
     const res = await fetch(`/api/notes/${noteId}`, {
       method: "PUT",

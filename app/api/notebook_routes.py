@@ -24,7 +24,7 @@ def create_notebook():
     db.session.commit()
     return newNotebook.to_dict()
 
-
+#edit notebook name
 @notebook_routes.route('/<int:notebook_id>/users/<int:user_id>', methods=['PUT'])
 def edit_notebook(notebook_id, user_id):
     data = json.loads(request.data)
@@ -49,3 +49,11 @@ def delete_notebook(notebook_id):
 def get_notebook_notes(notebook_id):
     notebook_notes_list = Note.query.filter(Note.notebook_id == notebook_id).all()
     return {"notes": [ note.to_dict() for note in notebook_notes_list ]}
+
+#create note in notebook.. moved here for easier route
+@notebook_routes.route('/<int:notebook_id>/users/<int:user_id>', methods=['POST'])
+def create_notebook_notes(notebook_id, user_id):
+    new_note = Note(title="Untitled", content="", user_id=user_id, notebook_id=notebook_id)
+    db.session.add(new_note)
+    db.session.commit()
+    return new_note.to_dict()

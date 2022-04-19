@@ -33,7 +33,7 @@ const NotebookNoteInfoEdit = () => {
 
     const deleteNote = noteId => {
         dispatch(deleteNoteThunk(noteId));
-        history.push(`/notes`)
+        history.push(`/notebooks/${notebookId}`)
     };
 
     const handleSubmit = e => {

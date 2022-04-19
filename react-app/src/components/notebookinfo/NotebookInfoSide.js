@@ -1,11 +1,28 @@
 import React, { useEffect } from 'react';
 // import { useParams } from 'react-router-dom';
+import Modal from 'react-modal'; //for modal
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 
 import { getAllUserNotesThunk } from '../../store/note';
 import { getAllUserNotebooksThunk } from '../../store/notebook';
 
+import NotebookEdit from './EditNotebook';
+
+
+
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+};
+
+Modal.setAppElement('#root')
 
 const NotebookInfoSide = () => {
     const dispatch = useDispatch();
@@ -49,7 +66,20 @@ const NotebookInfoSide = () => {
 
     // console.log(`{{{{{{{ filteredNotesArr }}}}}}}`, filteredNotesArr)
 
+    //modal setup
+    const [modalIsOpen, setIsOpen] = React.useState(false);
 
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    // function afterOpenModal() {
+    //     subtitle.style.color = '#f00';
+    // }
+
+    function closeModal() {
+        setIsOpen(false)
+    }
 
 
 
@@ -69,6 +99,16 @@ const NotebookInfoSide = () => {
                 <div className="index-note-header">
                     <h1>{currentNotebook?.title}</h1>
                 </div>
+                <button onClick={openModal}>Edit Notebook Name</button>
+                <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                    >
+                        <h2>Edit Notebook Title</h2>
+                        <NotebookEdit />
+                </Modal>
                 <div className='index-note-count'>{`${filteredNotesArr.length} Notes`}</div>
             </div>
             <div className='index-note-item-container'>

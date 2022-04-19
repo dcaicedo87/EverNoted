@@ -71,7 +71,7 @@ function App() {
               <>
                 <NavBar />
                 <NotebookInfoSide />
-                <NoteInfoEdit />
+                {/* <NoteInfoEdit /> */}
               </>
             </ProtectedRoute>
             <ProtectedRoute path='/notebooks/:notebookId/notes/:noteId' exact={true} >

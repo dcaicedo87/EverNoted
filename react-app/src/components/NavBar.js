@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams, useRouteMatch } from 'react-router-dom';
-import { createNoteThunk } from '../store/note';
+import { createNotebookNoteThunk, createNoteThunk } from '../store/note';
 import LogoutButton from './auth/LogoutButton';
 import"./NavBar.css";
 
@@ -37,9 +37,13 @@ const NavBar = () => {
   const handleNewNote = async e => {
     if (!sessionUser.id) return;
 
-    await (dispatch(createNoteThunk(sessionUser.id)))
-
-    history.push('/notes')
+    if (notebookId) {
+      console.log(`you made it!`)
+      await (dispatch(createNotebookNoteThunk(notebookIdNum, sessionUser.id)))
+    } else {
+      await (dispatch(createNoteThunk(sessionUser.id)))
+      history.push('/notes')
+    }
   }
 
   return (

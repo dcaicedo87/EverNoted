@@ -83,7 +83,7 @@ const SignUpForm = () => {
           </div>
           <div>
             <input className="form-input" id="username"
-              type='text'
+              type='email'
               name='email'
               placeholder='Email...'
               onChange={updateEmail}
