@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
-import { createNoteThunk } from '../store/note';
+import { NavLink, useHistory, useParams, useRouteMatch } from 'react-router-dom';
+import { createNotebookNoteThunk, createNoteThunk } from '../store/note';
 import LogoutButton from './auth/LogoutButton';
 import"./NavBar.css";
 
@@ -11,12 +11,39 @@ const NavBar = () => {
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
 
+  // NEED HELP WITH ACCESSING THE CURRENT PARAMS.. HAVING ISSUES SINCE NAV BAR IS OUTSIDE THE ROUTE SWITCHES.
+
+  // const Test = () => {
+  //   const { params } = useRouteMatch('/notebooks/:notebookId')
+  //   console.log(`PARAMS`, params)
+  // }
+
+
+  // console.log(`^^^^^^^TEST: `, Test)
+
+
+  // const [notebookId, setNotebookId] = useState()
+  // const [noteId, setNoteId] = useState()
+
+  const notebookId = useParams().notebookId;
+  console.log(`NOTEBOOK ID STRING: `, notebookId)
+  const notebookIdNum = parseInt(notebookId)
+  console.log(`NOTEBOOK ID NUM: `, notebookIdNum)
+  const noteId = useParams().noteId;
+  console.log(`NOTE ID STRING:`, noteId)
+  const noteIdNum = parseInt(noteId)
+  console.log(`NOTE ID NUM: `, noteIdNum)
+
   const handleNewNote = async e => {
     if (!sessionUser.id) return;
 
-    await (dispatch(createNoteThunk(sessionUser.id)))
-
-    history.push('/notes')
+    if (notebookId) {
+      console.log(`you made it!`)
+      await (dispatch(createNotebookNoteThunk(notebookIdNum, sessionUser.id)))
+    } else {
+      await (dispatch(createNoteThunk(sessionUser.id)))
+      history.push('/notes')
+    }
   }
 
   return (

@@ -62,8 +62,8 @@ export const createNotebookThunk = (notebook) => async dispatch => {
   }
 }
 
-export const editNotebookThunk = (notebookId, userId, title) => async dispatch => {
-  let res = await fetch(`api/notebooks/${notebookId}/users/${userId}`, {
+export const editNotebookThunk = (notebookId, title) => async dispatch => {
+  let res = await fetch(`/api/notebooks/edit/${notebookId}`, {
     method: 'PUT',
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify({title})
@@ -72,11 +72,12 @@ export const editNotebookThunk = (notebookId, userId, title) => async dispatch =
   if (res.ok) {
     const notebook = await res.json();
     dispatch(editNotebook(notebook))
+    return notebook;
   }
 }
 
 export const deleteNotebookThunk = (notebookId) => async dispatch => {
-  let res = await fetch(`api/notebooks/${notebookId}/delete`, {
+  let res = await fetch(`/api/notebooks/${notebookId}/delete`, {
     method: 'DELETE'
   });
 
@@ -103,6 +104,9 @@ const notebookReducer = (state = initialState, action) => {
       // console.log(`&&&&&&&&&&&`, action.notebook)
       newState[action.notebook.id] = action.notebook;
        return newState;
+    case EDIT_NOTEBOOK:
+      newState[action.notebook.id] = action.notebook;
+      return newState;
     case DELETE_NOTEBOOK:
       delete newState[action.notebook.id];
       return newState;
