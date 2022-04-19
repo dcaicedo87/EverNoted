@@ -28,9 +28,13 @@ def create_notebook():
 #edit notebook name
 @notebook_routes.route('/edit/<int:notebook_id>', methods=['PUT'])
 def edit_notebook(notebook_id,):
-    data = dict(request.json)
+    # print(f"REQQQQQQQQUUUUUUUUEEEEEEESSSSSTTTTT: {request}")
+    data = request.json
+    # print(f"DATAAAAAAAAAAAAAAAAAAAAAAAAAAA: {data}")
     notebook = Notebook.query.filter(Notebook.id == notebook_id).first()
-    notebook.title = data['title']
+    # print(f"THIS IS WHAT YOU ARE LOOKING FOR^^^^^^^^^^^^^^^^^^^^^^^^^^^: {data['title']}")
+    # print(f"THIS IS WHAT YOU ARE LOOKING FOR---------------------------: {data['title']['title']}")
+    notebook.title = data['title']['title']
     notebook.updated_at = func.now()
 
     db.session.commit()

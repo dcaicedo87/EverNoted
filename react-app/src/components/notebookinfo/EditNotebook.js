@@ -44,6 +44,8 @@ function NotebookEdit() {
       title,
     };
 
+    console.log(`^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `, notebookPayload)
+
 
     await dispatch(editNotebookThunk(notebookId, notebookPayload))
     window.location.reload(false);
