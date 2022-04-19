@@ -10,9 +10,15 @@ import { getAllUserNotebooksThunk } from '../../store/notebook';
 const NotebookInfoSide = () => {
     const dispatch = useDispatch();
 
-    // let notebookId = useParams().notebookId;
-    let { notebookId } = useParams();
-    console.log(`####################notebookId`, notebookId)
+    let notebookId = useParams().notebookId;
+    let notebookIdNum = parseInt(notebookId)
+    // console.log(`*(&*^&&&&&&&)`, notebookIdNum)
+    // let { notebookId } = useParams();
+    // console.log(`####################notebookId`, notebookId)
+
+    // console.log(`THIS IS NUMBER 1: `, 1)
+
+    // console.log(`THIS IS STRING 1: `, '1')
 
     const notebookObject = useSelector(state => state.notebooks)
     // console.log(`0-0-0-0-0-0-0-0 NotebookObj`, notebookObject)
@@ -29,23 +35,24 @@ const NotebookInfoSide = () => {
     // console.log(`***********notebooksArr `, notebooksArr)
 
     const notesArr = useSelector(state => Object.values(state.notes))
-    console.log(`()()()()()()()Notes Arr `,notesArr)
+    // console.log(`()()()()()()()Notes Arr `,notesArr)
 
     let filteredNotesArr = []
 
     for (let i = 0; i < notesArr.length; i++) {
         let element = notesArr[i];
-        if (element.notebook_id == notebookId) {
+        // if (element.notebook_id === null) continue;
+        if (element.notebook_id === notebookIdNum) {
             filteredNotesArr.push(element)
         }
     }
+
     // console.log(`{{{{{{{ filteredNotesArr }}}}}}}`, filteredNotesArr)
 
     useEffect(() => {
         dispatch(getAllUserNotesThunk(userId))
     }, [dispatch, userId]);
 
-    //change to grab particular notebook from id
     useEffect(() => {
         dispatch(getAllUserNotebooksThunk(userId))
     }, [dispatch, userId]);
@@ -57,12 +64,12 @@ const NotebookInfoSide = () => {
                 <div className="index-note-header">
                     <h1>{currentNotebook?.title}</h1>
                 </div>
-                <div className='index-note-count'>{`${notesArr.length} Notes`}</div>
+                <div className='index-note-count'>{`${filteredNotesArr.length} Notes`}</div>
             </div>
             <div className='index-note-item-container'>
             {filteredNotesArr.map((note, idx) => (
                 <ul className="item-container" key={idx}>
-                    <a href= {`/notes/${note.id}`} className="item-container-info">
+                    <a href= {`/notebooks/${notebookIdNum}/notes/${note.id}`} className="item-container-info">
                         <li>
                             <div className="item-container-info-title">{note.title}</div>
                             <div className="item-container-info-content">{note.content}</div>
