@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editNotebookThunk } from '../../store/notebook';
 
@@ -7,7 +7,7 @@ import { editNotebookThunk } from '../../store/notebook';
 function NotebookEdit() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user_id = useSelector((state) => state.session?.user.id)
+//   const user_id = useSelector((state) => state.session?.user.id)
 
   const [errors, setErrors] = useState([]);
 //   const [hasSubmitted, setHasSubmitted] = useState(false);

@@ -35,12 +35,12 @@ function App() {
   }
 
   //rendering of navbar if there is a user
-  function UserNavBar() {
-    if (!sessionUser) {
-      return null;
-    }
-    return <NavBar />
-  }
+  // function UserNavBar() {
+  //   if (!sessionUser) {
+  //     return null;
+  //   }
+  //   return <NavBar />
+  // }
 
   return (
     <>

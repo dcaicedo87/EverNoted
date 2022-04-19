@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory, useParams, useRouteMatch } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { createNotebookNoteThunk, createNoteThunk } from '../store/note';
 import LogoutButton from './auth/LogoutButton';
 import"./NavBar.css";
@@ -26,13 +26,13 @@ const NavBar = () => {
   // const [noteId, setNoteId] = useState()
 
   const notebookId = useParams().notebookId;
-  console.log(`NOTEBOOK ID STRING: `, notebookId)
+  // console.log(`NOTEBOOK ID STRING: `, notebookId)
   const notebookIdNum = parseInt(notebookId)
-  console.log(`NOTEBOOK ID NUM: `, notebookIdNum)
-  const noteId = useParams().noteId;
-  console.log(`NOTE ID STRING:`, noteId)
-  const noteIdNum = parseInt(noteId)
-  console.log(`NOTE ID NUM: `, noteIdNum)
+  // console.log(`NOTEBOOK ID NUM: `, notebookIdNum)
+  // const noteId = useParams().noteId;
+  // console.log(`NOTE ID STRING:`, noteId)
+  // const noteIdNum = parseInt(noteId)
+  // console.log(`NOTE ID NUM: `, noteIdNum)
 
   const handleNewNote = async e => {
     if (!sessionUser.id) return;

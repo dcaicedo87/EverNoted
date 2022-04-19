@@ -13,7 +13,7 @@ const NotebookNoteInfoEdit = () => {
     console.log(`SESSION USER ID:`, userId)
 
     // const sessionNotes = useSelector((state) => state.notes)
-    const notebook_id = useSelector(state => state.notebooks)
+    // const notebook_id = useSelector(state => state.notebooks)
 
 
     //CONVERT INTO INTEGERS AND SEE IF THAT FIXES THE ISSUE!
