@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models import db, Notebook, Note
 from sqlalchemy.sql import func
+# import json
 
 notebook_routes = Blueprint("notebooks", __name__)
 
@@ -25,9 +26,9 @@ def create_notebook():
     return newNotebook.to_dict()
 
 #edit notebook name
-@notebook_routes.route('/<int:notebook_id>/users/<int:user_id>', methods=['PUT'])
-def edit_notebook(notebook_id, user_id):
-    data = json.loads(request.data)
+@notebook_routes.route('/edit/<int:notebook_id>', methods=['PUT'])
+def edit_notebook(notebook_id,):
+    data = dict(request.json)
     notebook = Notebook.query.filter(Notebook.id == notebook_id).first()
     notebook.title = data['title']
     notebook.updated_at = func.now()

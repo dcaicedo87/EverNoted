@@ -62,8 +62,8 @@ export const createNotebookThunk = (notebook) => async dispatch => {
   }
 }
 
-export const editNotebookThunk = (notebookId, userId, title) => async dispatch => {
-  let res = await fetch(`/api/notebooks/${notebookId}/users/${userId}`, {
+export const editNotebookThunk = (notebookId, title) => async dispatch => {
+  let res = await fetch(`/api/notebooks/edit/${notebookId}`, {
     method: 'PUT',
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify({title})

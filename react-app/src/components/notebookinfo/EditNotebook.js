@@ -30,7 +30,7 @@ function NotebookEdit() {
   const updateTitle = (e) => setTitle(e.target.value);
   const { notebookId } = useParams();
   // console.log(`NOTEBOOK ID STRING: `, notebookId)
-  const notebookIdNum = parseInt(notebookId)
+//   const notebookIdNum = parseInt(notebookId)
   // console.log(`NOTEBOOK ID NUM: `, notebookIdNum)
 
   const handleSubmit = async (e) => {
@@ -40,12 +40,12 @@ function NotebookEdit() {
     if (errors.length) return alert('Error during submission.')
 
     const notebookPayload = {
-      id: notebookIdNum,
+      id: parseInt(notebookId),
       title,
     };
 
 
-    await dispatch(editNotebookThunk(notebookId, user_id, notebookPayload))
+    await dispatch(editNotebookThunk(notebookId, notebookPayload))
     window.location.reload(false);
     history.push(`/notebooks/${notebookId}`)
   };
@@ -69,7 +69,7 @@ function NotebookEdit() {
           </div>
         </div>
         <div>
-            <button className="create-new-spread-button" type="submit">Create Notebook</button>
+            <button className="create-new-spread-button" type="submit">Edit Notebook</button>
         </div>
       </form>
     </div>
