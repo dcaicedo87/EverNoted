@@ -12,9 +12,9 @@ const NotebookInfoSide = () => {
 
     let notebookId = useParams().notebookId;
     let notebookIdNum = parseInt(notebookId)
-    console.log(`*(&*^&&&&&&&)`, notebookIdNum)
+    // console.log(`*(&*^&&&&&&&)`, notebookIdNum)
     // let { notebookId } = useParams();
-    console.log(`####################notebookId`, notebookId)
+    // console.log(`####################notebookId`, notebookId)
 
     // console.log(`THIS IS NUMBER 1: `, 1)
 
@@ -35,7 +35,7 @@ const NotebookInfoSide = () => {
     // console.log(`***********notebooksArr `, notebooksArr)
 
     const notesArr = useSelector(state => Object.values(state.notes))
-    console.log(`()()()()()()()Notes Arr `,notesArr)
+    // console.log(`()()()()()()()Notes Arr `,notesArr)
 
     let filteredNotesArr = []
 
@@ -53,7 +53,6 @@ const NotebookInfoSide = () => {
         dispatch(getAllUserNotesThunk(userId))
     }, [dispatch, userId]);
 
-    //change to grab particular notebook from id
     useEffect(() => {
         dispatch(getAllUserNotebooksThunk(userId))
     }, [dispatch, userId]);
@@ -70,7 +69,7 @@ const NotebookInfoSide = () => {
             <div className='index-note-item-container'>
             {filteredNotesArr.map((note, idx) => (
                 <ul className="item-container" key={idx}>
-                    <a href= {`/notes/${note.id}`} className="item-container-info">
+                    <a href= {`/notebooks/${notebookIdNum}/notes/${note.id}`} className="item-container-info">
                         <li>
                             <div className="item-container-info-title">{note.title}</div>
                             <div className="item-container-info-content">{note.content}</div>

@@ -12,6 +12,7 @@ import NoteInfoSide from './components/noteinfo/NoteInfoSide';
 import NoteInfoEdit from './components/noteinfo/NoteInfoEdit';
 import NotebookIndex from './components/notebookinfo/NotebookIndex';
 import NotebookInfoSide from './components/notebookinfo/NotebookInfoSide';
+import NotebookNoteInfoEdit from './components/notebookinfo/NotebookNoteInfoEdit';
 
 
 function App() {
@@ -67,6 +68,12 @@ function App() {
               <>
                 <NotebookInfoSide />
                 <NoteInfoEdit />
+              </>
+            </ProtectedRoute>
+            <ProtectedRoute path='/notebooks/:notebookId/notes/:noteId' exact={true} >
+              <>
+                <NotebookInfoSide />
+                <NotebookNoteInfoEdit />
               </>
             </ProtectedRoute>
             <ProtectedRoute path="/notes" exact={true}>
