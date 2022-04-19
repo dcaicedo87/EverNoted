@@ -20,7 +20,7 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 
-const NotebookIndex = () => {
+const NotebookIndex = (props) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;

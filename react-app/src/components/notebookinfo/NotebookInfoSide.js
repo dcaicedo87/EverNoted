@@ -49,6 +49,11 @@ const NotebookInfoSide = () => {
 
     // console.log(`{{{{{{{ filteredNotesArr }}}}}}}`, filteredNotesArr)
 
+
+
+
+
+
     useEffect(() => {
         dispatch(getAllUserNotesThunk(userId))
     }, [dispatch, userId]);
@@ -68,15 +73,17 @@ const NotebookInfoSide = () => {
             </div>
             <div className='index-note-item-container'>
             {filteredNotesArr.map((note, idx) => (
-                <ul className="item-container" key={idx}>
-                    <a href= {`/notebooks/${notebookIdNum}/notes/${note.id}`} className="item-container-info">
-                        <li>
-                            <div className="item-container-info-title">{note.title}</div>
-                            <div className="item-container-info-content">{note.content}</div>
-                            <div className="item-container-info-update">{note.updated_at.substring(0, 16)}</div>
-                        </li>
-                    </a>
-                </ul>
+                // <div className='item-container-clickable' key={idx} onClick={}>
+                    <ul className="item-container">
+                        <a href= {`/notebooks/${notebookIdNum}/notes/${note.id}`} className="item-container-info">
+                            <li>
+                                <div className="item-container-info-title">{note.title}</div>
+                                <div className="item-container-info-content">{note.content}</div>
+                                <div className="item-container-info-update">{note.updated_at.substring(0, 16)}</div>
+                            </li>
+                        </a>
+                    </ul>
+                // </div>
             ))}
             </div>
         </div>

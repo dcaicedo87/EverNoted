@@ -21,6 +21,8 @@ function App() {
   // console.log(`APP SESSION USER:`, sessionUser)
   const dispatch = useDispatch();
 
+  // const [notebookId, setNotebookId] = useState();
+
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
