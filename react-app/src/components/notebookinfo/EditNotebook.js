@@ -32,7 +32,7 @@ function NotebookEdit() {
   let errors = [];
 
   if (title) {
-    if (title.length === 0 || title.length > 15) errors.push('Title needs to be between 1 to 15 characters.')
+    if (title.length === 0 || title.length > 20) errors.push('Title needs to be between 1 to 20 characters.')
   }
   if (!title) errors.push('Please enter a character for notebook title.')
 

@@ -69,7 +69,7 @@ small {
 .index-note {
     display: flex;
     height: 100vh;
-    width: 350px;
+    width: 16rem;
     flex-direction: column;
     background-color: #1a1a1a73;
     color: white;
@@ -96,7 +96,7 @@ small {
     background-color: white;
     width: 99.9%;
     /* width: 100vh; */
-    height: 80vh;
+    height: 70vh;
     font-size: 150%;
     resize: none;
 }
@@ -136,24 +136,32 @@ small {
 }
 
 .index-note-header {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
+/* .index-note-header p {
+
+} */
+
 .index-note-count {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 .index-note-item-container {
     display: flex;
     flex-direction: column-reverse;
-    margin-top: 8.8rem;
+    margin-top: 10.1rem;
 }
 
 .index-note-header-container {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 1rem;
-    width: 19.7rem;
+    width: 13.8rem;
+    height: 8rem;
     background-color: rgb(26, 26, 26);
     border: 0.1rem solid white;
 }
@@ -200,4 +208,8 @@ small {
     border-radius: 4px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
     font-size: 17px;
+}
+
+.edit-form-errors {
+    color: white;
 }
