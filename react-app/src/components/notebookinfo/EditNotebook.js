@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editNotebookThunk } from '../../store/notebook';
 
@@ -8,30 +8,30 @@ function NotebookEdit() {
   const dispatch = useDispatch();
   const history = useHistory();
 //   const user_id = useSelector((state) => state.session?.user.id)
+  const sessionNotebooks = useSelector(state => state.notebooks)
+  // console.log(`*&*&*&*&*&*&*&*&*&*&`, sessionNotebooks)
 
   const [errors, setErrors] = useState([]);
-//   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [title, setTitle] = useState("");
-
-
-  useEffect(() => {
-
-    let errors = [];
-
-    if (title) {
-      if (title.length === 0 || title.length > 10) errors.push('Title needs to be between 1 to 10 characters.')
-    }
-    if (!title) errors.push('Please enter a character for notebook Title.')
-
-    setErrors(errors);
-
-  }, [title])
 
   const updateTitle = (e) => setTitle(e.target.value);
   const { notebookId } = useParams();
   // console.log(`NOTEBOOK ID STRING: `, notebookId)
-//   const notebookIdNum = parseInt(notebookId)
+  // const notebookIdNum = parseInt(notebookId)
   // console.log(`NOTEBOOK ID NUM: `, notebookIdNum)
+
+  const [title, setTitle] = useState(sessionNotebooks[notebookId].title);
+  useEffect(() => {
+
+  let errors = [];
+
+  if (title) {
+    if (title.length === 0 || title.length > 10) errors.push('Title needs to be between 1 to 10 characters.')
+  }
+  if (!title) errors.push('Please enter a character for notebook Title.')
+
+  setErrors(errors);
+
+}, [title])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
