@@ -18,6 +18,7 @@ const NoteInfoEdit = () => {
 
     const [title, setTitle] = useState(sessionUser.notes[noteId]?.title);
     const [content, setContent] = useState(sessionUser.notes[noteId]?.content);
+    const [errors, setErrors] = useState([]);
 
     const userId = sessionUser.id;
     // console.log(`USER ID:`, userId) // console for user id
@@ -37,18 +38,18 @@ const NoteInfoEdit = () => {
         console.log(`UPDATE NOTE:`, updatedNote)
 
         //error validation
-        // setErrors([])
+        setErrors([])
 
-        // const newErrors = [];
+        const newErrors = [];
 
-        // if (updatedReview.content.length < 4) {
-        //   newErrors.push("Content must be 4 characters or more.");
-        // }
+        if (updatedNote.title.length < 1) {
+          newErrors.push("Title must be 1 character or more.");
+        }
 
-        // if (newErrors.length > 0) {
-        //   setErrors(newErrors);
-        //   return;
-        // }
+        if (newErrors.length > 0) {
+          setErrors(newErrors);
+          return;
+        }
 
         dispatch(editNoteThunk(noteId, updatedNote))
         history.push(`/notes/${noteId}`)
@@ -62,17 +63,17 @@ const NoteInfoEdit = () => {
         <>
             <div className='edit-form-container'>
                 <form onSubmit={handleSubmit}>
-                {/* <div>
+                <div className='edit-form-errors'>
                     {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                     ))}
-                </div> */}
+                </div>
                 <div>
                     <input
                     className='edit-form-title'
                     name='title'
                     type='text'
-                    placeholder='Title'
+                    placeholder='*Title'
                     value={title}
                       onChange={e => setTitle(e.target.value)}
                     />
