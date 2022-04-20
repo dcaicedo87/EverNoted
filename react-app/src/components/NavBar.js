@@ -66,11 +66,11 @@ const NavBar = () => {
               Notebooks
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink className="nav-bar-links" to='/tags' exact={true} activeClassName='active'>
               Tags
             </NavLink>
-          </li>
+          </li> */}
           {/* <li>
             <NavLink to='/login' exact={true} activeClassName='active'>
               Login

@@ -13,15 +13,28 @@ function NotebookAdd() {
 //   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [title, setTitle] = useState("");
 
+  const notebooksArr = useSelector(state => Object.values(state.notebooks))
+  // console.log(`^^^^ NOTEBOOKS ARRAY: `, notebooksArr)
+
+  const notebookTitleArr = [];
+
+  notebooksArr.forEach(notebook => notebookTitleArr.push(notebook.title))
+
+  // console.log(`NOTEBOOKS TITLE ARRAY: `, notebookTitleArr)
+
+
 
   useEffect(() => {
 
     let errors = [];
 
     if (title) {
-      if (title.length === 0 || title.length > 10) errors.push('Title needs to be between 1 to 10 characters.')
+      if (title.length === 0 || title.length > 15) errors.push('Title needs to be between 1 to 15 characters.')
     }
-    if (!title) errors.push('Please enter a character for notebook Title.')
+    if (!title) errors.push('Please enter a character for notebook title.')
+    // if (notebookTitleArr.includes(title)) {
+    //   errors.push('Title needs to be unique!')
+    // }
 
     setErrors(errors);
 
@@ -41,6 +54,17 @@ function NotebookAdd() {
       title,
       user_id: user_id,
     };
+
+    const newErrors = [];
+
+    if (notebookTitleArr.includes(title)) {
+      newErrors.push('Title needs to be unique!')
+    }
+
+    if (newErrors.length > 0) {
+      setErrors(newErrors)
+      return;
+    }
 
     await dispatch(createNotebookThunk(notebookPayload))
     window.location.reload(false);
