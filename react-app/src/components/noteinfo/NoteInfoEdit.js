@@ -10,11 +10,30 @@ const NoteInfoEdit = () => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     // console.log(`SESSION USER:`, sessionUser)
+    const stateNotesArr = useSelector(state => Object.values(state.notes))
+    console.log(`STATE NOTES ARRAY: `, stateNotesArr)
+
 
     // const sessionNotes = useSelector((state) => state.notes)
 
     const { noteId } = useParams();
     // console.log(`NOTE ID:`, noteId)
+    const noteIdNum = parseInt(noteId)
+    console.log(`NOTED ID NUM: `, noteIdNum)
+
+    const currentNote = [];
+    for (let i = 0; i < stateNotesArr.length; i++) {
+        let note = stateNotesArr[i]
+        if (note.id === noteIdNum) {
+            currentNote.push(note)
+        }
+    }
+
+    console.log("CURRENT NOTE: ", currentNote)
+
+    const currentNoteUserId = currentNote[0]?.user_id;
+
+    console.log(`CURRENT NOTE USER_ID: `, currentNoteUserId)
 
     const [title, setTitle] = useState(sessionUser.notes[noteId]?.title);
     const [content, setContent] = useState(sessionUser.notes[noteId]?.content);
