@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+.slogan {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 0rem;
+    color: rgb(127, 7, 178);
+    margin-top: 1rem;
+}
+
 .main-container-login {
     display: flex;
     justify-content: space-between;
@@ -42,7 +51,7 @@
     display: block;
     align-items: center;
     justify-content: center;
-    top: 4em;
+    top: 1em;
     border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -57,7 +66,7 @@
 }
 
 .login-form {
-    margin-top: 5rem;
+    margin-top: 2rem;
     width: 20rem;
 }
 

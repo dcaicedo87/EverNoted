@@ -42,7 +42,7 @@
     display: block;
     align-items: center;
     justify-content: center;
-    top: 4em;
+    /* top: 4em; */
     border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -57,7 +57,7 @@
 }
 
 .login-form {
-    margin-top: 5rem;
+    margin-top: 2rem;
     width: 20rem;
 }
 

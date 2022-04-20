@@ -53,6 +53,7 @@ const LoginForm = () => {
           <div className="logo resize">
             <img className="resize" src={evernotedLogo} alt={altLogo}></img>
           </div>
+          <div className='slogan'>NOTES TO SELF</div>
           <form className="login-form" onSubmit={onLogin}>
             <div>
               {errors.map((error, ind) => (
