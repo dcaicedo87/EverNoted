@@ -21,7 +21,7 @@ Backend
 * PostgreSQL
 * SQLAlchemy
 
-##Evernoted setup
+## Evernoted setup
 1. Clone this repository ([https://github.com/dcaicedo87/EverNoted](https://github.com/dcaicedo87/EverNoted))
 2. Install dependencies - `pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt`
 3. Create a `.env` file based on the **_.env.example_** with proper settings required for the development environment
@@ -39,6 +39,7 @@ Backend
 
 ### Notes
 Users can begin creating notes once signed in to Evernoted. They will be introduced to the "All Notes" page where they can click on the "ADD NOTE" button to create their very first note.
+
 ![All Notes Page](https://user-images.githubusercontent.com/13339377/164383637-52249cbc-b2d3-48da-82fd-3b09e9dec379.JPG)
 
 ### Notebooks
