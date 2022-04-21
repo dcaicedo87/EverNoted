@@ -96,7 +96,7 @@ const NotebookInfoSide = () => {
                         <div className="index-note-header">
                             <p>{currentNotebook?.title}</p>
                         </div>
-                        <button onClick={openModal}>Edit Notebook Name</button>
+                        <button className='edit-notebook-title' onClick={openModal}>Edit Notebook Name</button>
                         <Modal
                                 isOpen={modalIsOpen}
                                 onRequestClose={closeModal}

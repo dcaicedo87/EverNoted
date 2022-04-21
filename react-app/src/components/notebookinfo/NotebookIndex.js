@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteNotebookThunk, getAllUserNotebooksThunk } from '../../store/notebook';
 import Modal from 'react-modal'; //for modal
 import CreateNotebook from './CreateNotebook';
+import { FaBookOpen } from 'react-icons/fa';
 import './NotebookIndex.css';
 import { NavLink } from 'react-router-dom';
 
@@ -60,7 +61,7 @@ const NotebookIndex = () => {
             <div className="notebook-index-header-container">
                 <p>Notebooks</p>
                 <div className="notebooks-index-notebooks-info">
-                    <h3>{`${notebooksArr.length} notebooks`}</h3>
+                    <h3 className='index-notebooks-counter'>{`${notebooksArr.length} notebooks`}</h3>
                     <button onClick={openModal} className="notebooks-index-notebooks-button">
                         New Notebook
                     </button>
@@ -68,7 +69,9 @@ const NotebookIndex = () => {
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
                         style={customStyles}
-                        contentLabel="Example Modal"
+                        contentLabel="Create Notebook Modal"
+                        bodyOpenClassName='modal-create'
+                        portalClassName='create-notebook'
                     >
                         <h2>Create a Notebook</h2>
                         <CreateNotebook />
@@ -91,7 +94,7 @@ const NotebookIndex = () => {
                         <ul className="index-list-values-container" key={idx}>
                             <li className="index-list-values">
                                 <NavLink to={`/notebooks/${notebook.id}`}>
-                                    <div className="index-list-values-title">{notebook.title}</div>
+                                    <div className="index-list-values-title"><FaBookOpen /> {notebook.title}</div>
                                 </NavLink>
                                 <div className="index-list-values-created">{sessionUser.username}</div>
                                 <div className="index-list-values-updated">{notebook.updated_at.substring(0, 16)}</div>

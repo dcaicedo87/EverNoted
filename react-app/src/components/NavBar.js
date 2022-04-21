@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { createNotebookNoteThunk, createNoteThunk } from '../store/note';
 import LogoutButton from './auth/LogoutButton';
+import { FaStickyNote } from 'react-icons/fa';
+import { FaBookOpen } from 'react-icons/fa';
+import { FaUserAlt } from 'react-icons/fa';
 import"./NavBar.css";
+
+
 
 const NavBar = () => {
 
@@ -66,7 +71,7 @@ const NavBar = () => {
       <div>
         <nav className="navbar-container">
           <div className="navbar-username-container">
-            <h1>{sessionUser?.username}</h1>
+            <FaUserAlt /> {sessionUser?.username}
           </div>
           <div className="navbar-add-button-container">
             <button className="navbar-add-button" onClick={handleNewNote}>ADD NOTE</button>
@@ -74,12 +79,14 @@ const NavBar = () => {
           <ul className='navbar-list-container'>
             <li>
               <NavLink className="nav-bar-links" to='/notes' exact={true} activeClassName='active'>
-                All Notes
+                <div>
+                  <FaStickyNote /> All Notes
+                </div>
               </NavLink>
             </li>
             <li>
               <NavLink className="nav-bar-links" to='/notebooks' exact={true} activeClassName='active'>
-                Notebooks
+                <FaBookOpen /> Notebooks
               </NavLink>
             </li>
             {/* <li>
