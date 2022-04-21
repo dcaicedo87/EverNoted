@@ -34,7 +34,7 @@ const NoteInfoSide = () => {
         <div className="index-note">
             <div className="index-note-header-container">
                 <div className="index-note-header">
-                    <h1>ALL NOTES</h1>
+                    <p className="index-note-header-title">ALL NOTES</p>
                 </div>
                 <div className='index-note-count'>{`${notesArr.length} Notes`}</div>
             </div>

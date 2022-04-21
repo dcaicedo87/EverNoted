@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteNotebookThunk, getAllUserNotebooksThunk } from '../../store/notebook';
 import Modal from 'react-modal'; //for modal
 import CreateNotebook from './CreateNotebook';
+import { FaBookOpen } from 'react-icons/fa';
 import './NotebookIndex.css';
 import { NavLink } from 'react-router-dom';
 
@@ -91,7 +92,7 @@ const NotebookIndex = () => {
                         <ul className="index-list-values-container" key={idx}>
                             <li className="index-list-values">
                                 <NavLink to={`/notebooks/${notebook.id}`}>
-                                    <div className="index-list-values-title">{notebook.title}</div>
+                                    <div className="index-list-values-title"><FaBookOpen /> {notebook.title}</div>
                                 </NavLink>
                                 <div className="index-list-values-created">{sessionUser.username}</div>
                                 <div className="index-list-values-updated">{notebook.updated_at.substring(0, 16)}</div>

@@ -69,7 +69,7 @@ small {
 .index-note {
     display: flex;
     height: 100vh;
-    width: 16rem;
+    width: 19rem;
     flex-direction: column;
     background-color: #1a1a1a73;
     color: white;
@@ -106,6 +106,12 @@ small {
     justify-content: space-between;
 }
 
+.item-container-info {
+    display: flex;
+    justify-content: space-between;
+    height: 8rem;
+}
+
 .item-container-info-content {
     word-break: break-word;
     overflow: hidden;
@@ -121,7 +127,7 @@ small {
 }
 
 .item-container-info-title {
-    font-size: 1.2em;
+    font-size: 1.5em;
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -139,12 +145,16 @@ small {
     font-size: 2rem;
 }
 
+.index-note-header-title {
+    font-size: 3rem;
+}
+
 /* .index-note-header p {
 
 } */
 
 .index-note-count {
-    font-size: 1rem;
+    font-size: 1.3rem;
     /* margin-bottom: 0.5rem; */
 }
 
@@ -160,7 +170,7 @@ small {
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    width: 13.8rem;
+    width: 16.8rem;
     height: 8rem;
     background-color: rgb(26, 26, 26);
     border: 0.1rem solid white;
@@ -212,4 +222,23 @@ small {
 
 .edit-form-errors {
     color: white;
+}
+
+.index-list-values-title {
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+.notebooks-index-notebooks-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.5rem 2.7rem;
+    text-align: center;
+    background-color: #0b720b;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
+    font-size: 17px;
 }
