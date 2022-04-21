@@ -1,7 +1,7 @@
 Welcome to the EverNoted wiki!
 
 ## Overview
-[Evernoted](https://aa-evernoted.herokuapp.com/) is an [Evernote](https://evernote.com/) which allows users to create notes as well as notebooks to help keep their lives organized. Evernoted helps you stay on top of your thoughts and ideas should you ever need to recall them.
+[Evernoted](https://aa-evernoted.herokuapp.com/) is an [Evernote](https://evernote.com/) clone which allows users to create notes as well as notebooks to help keep their lives organized. Evernoted helps you stay on top of your thoughts and ideas should you ever need to recall them.
 
 ## Application Architecture
 
