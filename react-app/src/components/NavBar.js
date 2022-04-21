@@ -34,20 +34,20 @@ const NavBar = () => {
   // const noteIdNum = parseInt(noteId)
   // console.log(`NOTE ID NUM: `, noteIdNum)
 
-  const notebookObject = useSelector(state => state.notebooks)
+  // const notebookObject = useSelector(state => state.notebooks)
   // console.log(`0-0-0-0-0-0-0-0 NotebookObj`, notebookObject)
 
-  const currentNotebook = notebookObject[notebookId]
+  // const currentNotebook = notebookObject[notebookId]
   // console.log(`*&*&*&*&&**&*&*&&*&*currentNotebook`, currentNotebook)
 
   //auth
 
-  let actualUserBool;
-  if (currentNotebook?.user_id === sessionUser.id) {
-      actualUserBool = true;
-  } else {
-      actualUserBool = false;
-  }
+  // let actualUserBool;
+  // if (currentNotebook?.user_id === sessionUser.id) {
+  //     actualUserBool = true;
+  // } else {
+  //     actualUserBool = false;
+  // }
 
   const handleNewNote = async e => {
     if (!sessionUser.id) return;
