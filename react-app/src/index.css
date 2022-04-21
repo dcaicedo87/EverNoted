@@ -86,6 +86,9 @@ small {
 .item-container a li div {
     list-style-type: none;
     margin: 0.5rem;
+    /* height: 100%; */
+    font-size: medium;
+    /* line-height: 3rem; */
 }
 
 .item-container {
@@ -109,7 +112,7 @@ small {
 .item-container-info {
     display: flex;
     justify-content: space-between;
-    height: 8rem;
+    height: 100%;
 }
 
 .item-container-info-content {
@@ -117,9 +120,9 @@ small {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    line-height: 16px;
+    /* line-height: 16px; */
     /* fallback */
-    max-height: 32px;
+    /* max-height: 32px; */
     /* fallback */
     -webkit-line-clamp: 2;
     /* number of lines to show */
@@ -127,14 +130,15 @@ small {
 }
 
 .item-container-info-title {
-    font-size: 1.5em;
+    font-size: 2em !important;
+    /* line-height: 3rem; */
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    line-height: 16px;
+    /* line-height: 16px; */
     /* fallback */
-    max-height: 32px;
+    /* max-height: 32px; */
     /* fallback */
     -webkit-line-clamp: 2;
     /* number of lines to show */
