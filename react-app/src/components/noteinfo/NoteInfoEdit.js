@@ -9,7 +9,7 @@ const NoteInfoEdit = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    // console.log(`SESSION USER:`, sessionUser)
+    console.log(`SESSION USER:`, sessionUser.id)
     const stateNotesArr = useSelector(state => Object.values(state.notes))
     console.log(`STATE NOTES ARRAY: `, stateNotesArr)
 
@@ -34,6 +34,15 @@ const NoteInfoEdit = () => {
     const currentNoteUserId = currentNote[0]?.user_id;
 
     console.log(`CURRENT NOTE USER_ID: `, currentNoteUserId)
+
+    let actualUserBool;
+    if (currentNoteUserId === sessionUser.id) {
+        actualUserBool = true;
+    } else {
+        actualUserBool = false;
+    }
+
+    console.log(`ACTUAL USER BOOLEAN: `, actualUserBool)
 
     const [title, setTitle] = useState(sessionUser.notes[noteId]?.title);
     const [content, setContent] = useState(sessionUser.notes[noteId]?.content);
@@ -80,40 +89,44 @@ const NoteInfoEdit = () => {
 
     return (
         <>
-            <div className='edit-form-container'>
-                <form onSubmit={handleSubmit}>
-                <div className='edit-form-errors'>
-                    {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                    ))}
+            { actualUserBool ?
+                <div className='edit-form-container'>
+                    <form onSubmit={handleSubmit}>
+                    <div className='edit-form-errors'>
+                        {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                        ))}
+                    </div>
+                    <div>
+                        <input
+                        className='edit-form-title'
+                        name='title'
+                        type='text'
+                        placeholder='*Title'
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <textarea
+                        className="edit-form-content"
+                        name='content'
+                        placeholder='Content'
+                        value={content}
+                        onChange={e => setContent(e.target.value)}
+                        />
+                    </div>
+                    <div className="edit-form-button-container">
+                        <button className="edit-form-button-save" type='submit'>Save</button>
+                    </div>
+                    </form>
+                    <div className='edit-delete-button-container'>
+                        <button className="edit-delete-button" onClick={() => deleteNote(noteId)}>DELETE NOTE</button>
+                    </div>
                 </div>
-                <div>
-                    <input
-                    className='edit-form-title'
-                    name='title'
-                    type='text'
-                    placeholder='*Title'
-                    value={title}
-                      onChange={e => setTitle(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <textarea
-                    className="edit-form-content"
-                    name='content'
-                    placeholder='Content'
-                    value={content}
-                      onChange={e => setContent(e.target.value)}
-                    />
-                </div>
-                <div className="edit-form-button-container">
-                    <button className="edit-form-button-save" type='submit'>Save</button>
-                </div>
-                </form>
-                <div className='edit-delete-button-container'>
-                    <button className="edit-delete-button" onClick={() => deleteNote(noteId)}>DELETE NOTE</button>
-                </div>
-            </div>
+                :
+                null
+            }
         </>
       );
 }

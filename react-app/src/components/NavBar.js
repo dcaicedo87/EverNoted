@@ -34,11 +34,26 @@ const NavBar = () => {
   // const noteIdNum = parseInt(noteId)
   // console.log(`NOTE ID NUM: `, noteIdNum)
 
+  const notebookObject = useSelector(state => state.notebooks)
+  // console.log(`0-0-0-0-0-0-0-0 NotebookObj`, notebookObject)
+
+  const currentNotebook = notebookObject[notebookId]
+  // console.log(`*&*&*&*&&**&*&*&&*&*currentNotebook`, currentNotebook)
+
+  //auth
+
+  let actualUserBool;
+  if (currentNotebook?.user_id === sessionUser.id) {
+      actualUserBool = true;
+  } else {
+      actualUserBool = false;
+  }
+
   const handleNewNote = async e => {
     if (!sessionUser.id) return;
 
     if (notebookId) {
-      console.log(`you made it!`)
+      // console.log(`you made it!`)
       await (dispatch(createNotebookNoteThunk(notebookIdNum, sessionUser.id)))
     } else {
       await (dispatch(createNoteThunk(sessionUser.id)))
@@ -47,51 +62,53 @@ const NavBar = () => {
   }
 
   return (
-    <div>
-      <nav className="navbar-container">
-        <div className="navbar-username-container">
-          <h1>{sessionUser?.username}</h1>
-        </div>
-        <div className="navbar-add-button-container">
-          <button className="navbar-add-button" onClick={handleNewNote}>ADD NOTE</button>
-        </div>
-        <ul className='navbar-list-container'>
-          <li>
-            <NavLink className="nav-bar-links" to='/notes' exact={true} activeClassName='active'>
-              All Notes
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="nav-bar-links" to='/notebooks' exact={true} activeClassName='active'>
-              Notebooks
-            </NavLink>
-          </li>
-          {/* <li>
-            <NavLink className="nav-bar-links" to='/tags' exact={true} activeClassName='active'>
-              Tags
-            </NavLink>
-          </li> */}
-          {/* <li>
-            <NavLink to='/login' exact={true} activeClassName='active'>
-              Login
-            </NavLink>
-          </li> */}
-          {/* <li>
-            <NavLink to='/sign-up' exact={true} activeClassName='active'>
-              Sign Up
-            </NavLink>
-          </li> */}
-          {/* <li>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
-            </NavLink>
-          </li> */}
-          <li>
-            <LogoutButton />
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <>
+      <div>
+        <nav className="navbar-container">
+          <div className="navbar-username-container">
+            <h1>{sessionUser?.username}</h1>
+          </div>
+          <div className="navbar-add-button-container">
+            <button className="navbar-add-button" onClick={handleNewNote}>ADD NOTE</button>
+          </div>
+          <ul className='navbar-list-container'>
+            <li>
+              <NavLink className="nav-bar-links" to='/notes' exact={true} activeClassName='active'>
+                All Notes
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-bar-links" to='/notebooks' exact={true} activeClassName='active'>
+                Notebooks
+              </NavLink>
+            </li>
+            {/* <li>
+              <NavLink className="nav-bar-links" to='/tags' exact={true} activeClassName='active'>
+                Tags
+              </NavLink>
+            </li> */}
+            {/* <li>
+              <NavLink to='/login' exact={true} activeClassName='active'>
+                Login
+              </NavLink>
+            </li> */}
+            {/* <li>
+              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                Sign Up
+              </NavLink>
+            </li> */}
+            {/* <li>
+              <NavLink to='/users' exact={true} activeClassName='active'>
+                Users
+              </NavLink>
+            </li> */}
+            <li>
+              <LogoutButton />
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </>
   );
 }
 
