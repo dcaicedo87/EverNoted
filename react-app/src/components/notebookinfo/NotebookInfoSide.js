@@ -29,13 +29,7 @@ const NotebookInfoSide = () => {
 
     let notebookId = useParams().notebookId;
     let notebookIdNum = parseInt(notebookId)
-    // console.log(`*(&*^&&&&&&&)`, notebookIdNum)
-    // let { notebookId } = useParams();
-    // console.log(`####################notebookId`, notebookId)
-
-    // console.log(`THIS IS NUMBER 1: `, 1)
-
-    // console.log(`THIS IS STRING 1: `, '1')
+    // console.log(`NOTEBOOK ID Num: `, notebookId)
 
     const notebookObject = useSelector(state => state.notebooks)
     // console.log(`0-0-0-0-0-0-0-0 NotebookObj`, notebookObject)
@@ -43,13 +37,9 @@ const NotebookInfoSide = () => {
     const currentNotebook = notebookObject[notebookId]
     // console.log(`*&*&*&*&&**&*&*&&*&*currentNotebook`, currentNotebook)
 
-
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     // console.log(userId) // console log for user id
-
-    // const notebooksArr = useSelector(state => Object.values(state.notebooks))
-    // console.log(`***********notebooksArr `, notebooksArr)
 
     const notesArr = useSelector(state => Object.values(state.notes))
     // console.log(`()()()()()()()Notes Arr `,notesArr)
@@ -64,7 +54,16 @@ const NotebookInfoSide = () => {
         }
     }
 
-    // console.log(`{{{{{{{ filteredNotesArr }}}}}}}`, filteredNotesArr)
+    //auth
+
+    let actualUserBool;
+    if (currentNotebook?.user_id === sessionUser.id) {
+        actualUserBool = true;
+    } else {
+        actualUserBool = false;
+    }
+
+    // console.log(`ACTUAL USER BOOLEAN: `, actualUserBool)
 
     //modal setup
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -72,10 +71,6 @@ const NotebookInfoSide = () => {
     function openModal() {
         setIsOpen(true);
     }
-
-    // function afterOpenModal() {
-    //     subtitle.style.color = '#f00';
-    // }
 
     function closeModal() {
         setIsOpen(false)
@@ -94,39 +89,45 @@ const NotebookInfoSide = () => {
 
 
     return (
-        <div className="index-note">
-            <div className="index-note-header-container">
-                <div className="index-note-header">
-                    <p>{currentNotebook?.title}</p>
+        <>
+            { actualUserBool ?
+                <div className="index-note">
+                    <div className="index-note-header-container">
+                        <div className="index-note-header">
+                            <p>{currentNotebook?.title}</p>
+                        </div>
+                        <button onClick={openModal}>Edit Notebook Name</button>
+                        <Modal
+                                isOpen={modalIsOpen}
+                                onRequestClose={closeModal}
+                                style={customStyles}
+                                contentLabel="Example Modal"
+                            >
+                                <h2>Edit Notebook Title</h2>
+                                <NotebookEdit />
+                        </Modal>
+                        <div className='index-note-count'>{`${filteredNotesArr.length} Notes`}</div>
+                    </div>
+                    <div className='index-note-item-container'>
+                    {filteredNotesArr.map((note, idx) => (
+                        <div className='item-container-clickable' key={idx}>
+                            <ul className="item-container">
+                                <a href= {`/notebooks/${notebookIdNum}/notes/${note.id}`} className="item-container-info">
+                                    <li>
+                                        <div className="item-container-info-title">{note.title}</div>
+                                        <div className="item-container-info-content">{note.content}</div>
+                                        <div className="item-container-info-update">{note.updated_at.substring(0, 16)}</div>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div>
+                    ))}
+                    </div>
                 </div>
-                <button onClick={openModal}>Edit Notebook Name</button>
-                <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        contentLabel="Example Modal"
-                    >
-                        <h2>Edit Notebook Title</h2>
-                        <NotebookEdit />
-                </Modal>
-                <div className='index-note-count'>{`${filteredNotesArr.length} Notes`}</div>
-            </div>
-            <div className='index-note-item-container'>
-            {filteredNotesArr.map((note, idx) => (
-                <div className='item-container-clickable' key={idx}>
-                    <ul className="item-container">
-                        <a href= {`/notebooks/${notebookIdNum}/notes/${note.id}`} className="item-container-info">
-                            <li>
-                                <div className="item-container-info-title">{note.title}</div>
-                                <div className="item-container-info-content">{note.content}</div>
-                                <div className="item-container-info-update">{note.updated_at.substring(0, 16)}</div>
-                            </li>
-                        </a>
-                    </ul>
-                </div>
-            ))}
-            </div>
-        </div>
+                :
+                null
+            }
+        </>
     )
 }
 
