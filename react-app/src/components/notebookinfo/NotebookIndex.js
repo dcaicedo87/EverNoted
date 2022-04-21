@@ -61,7 +61,7 @@ const NotebookIndex = () => {
             <div className="notebook-index-header-container">
                 <p>Notebooks</p>
                 <div className="notebooks-index-notebooks-info">
-                    <h3>{`${notebooksArr.length} notebooks`}</h3>
+                    <h3 className='index-notebooks-counter'>{`${notebooksArr.length} notebooks`}</h3>
                     <button onClick={openModal} className="notebooks-index-notebooks-button">
                         New Notebook
                     </button>
@@ -69,7 +69,9 @@ const NotebookIndex = () => {
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
                         style={customStyles}
-                        contentLabel="Example Modal"
+                        contentLabel="Create Notebook Modal"
+                        bodyOpenClassName='modal-create'
+                        portalClassName='create-notebook'
                     >
                         <h2>Create a Notebook</h2>
                         <CreateNotebook />

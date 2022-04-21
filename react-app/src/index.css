@@ -154,7 +154,7 @@ small {
 } */
 
 .index-note-count {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     /* margin-bottom: 0.5rem; */
 }
 
@@ -241,4 +241,27 @@ small {
     border-radius: 20px;
     box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
     font-size: 17px;
+}
+
+.edit-notebook-title {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: .3s;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    min-width: 6rem;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    /* padding: 17px 48px; */
+    color: #fff;
+    background-color: #d7a61e;
+    height: 1.2rem;
+    /* margin-top: 1rem; */
 }

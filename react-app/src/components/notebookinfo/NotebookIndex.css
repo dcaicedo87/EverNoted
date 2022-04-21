@@ -125,3 +125,66 @@
     /* text-align: center; */
     margin-left: 0.5rem;
 }
+
+/* .ReactModal__Content--after-open {} */
+
+
+.ReactModal__Content--after-open {
+    margin: 0px !important;
+    padding: 0px !important;
+    border: 0px !important;
+    outline: 0px !important;
+    font: none !important;
+    color: none !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    vertical-align: baseline !important;
+    box-sizing: none !important;
+    background: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+
+    background-color: rgb(160, 204, 254) !important;
+    height: 10rem;
+    width: 20rem;
+}
+
+.ReactModal__Content--after-open h2 {
+    text-align: center;
+    font-size: xx-large;
+}
+
+.ReactModal__Content--after-open div {
+    text-align: center;
+}
+
+.create-form-title {
+    font-size: 1.3rem;
+}
+
+.create-new-spread-button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: .3s;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    min-width: 6rem;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    /* padding: 17px 48px; */
+    color: #fff;
+    background-color: #1ed75c;
+    height: 2rem;
+    margin-top: 1rem;
+}
+
+.index-notebooks-counter {
+    place-self: flex-end;
+}
