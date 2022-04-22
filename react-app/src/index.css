@@ -52,7 +52,8 @@ small {
     padding: 0px;
     border: 0px;
     outline: 0px;
-    font: inherit;
+    /* font: inherit; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: inherit;
     text-align: inherit;
     text-decoration: inherit;
@@ -184,6 +185,7 @@ small {
     width: 99.5%;
     font-size: 250%;
     margin-bottom: 0.1rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .edit-form-button-save {
