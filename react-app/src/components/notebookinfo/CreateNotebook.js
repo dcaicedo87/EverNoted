@@ -24,21 +24,21 @@ function NotebookAdd() {
 
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    let errors = [];
+    // let errors = [];
 
-    if (title) {
-      if (title.length === 0 || title.length > 20) errors.push('Title needs to be between 1 to 20 characters.')
-    }
-    if (!title) errors.push('Please enter a character for notebook title.')
+    // if (title) {
+    //   if (title.length === 0 || title.length > 20) errors.push('Title needs to be between 1 to 20 characters.')
+    // }
+    // if (!title) errors.push('Please enter a character for notebook title.')
     // if (notebookTitleArr.includes(title)) {
     //   errors.push('Title needs to be unique!')
     // }
 
-    setErrors(errors);
+    // setErrors(errors);
 
-  }, [title])
+  // }, [title])
 
   const updateTitle = (e) => setTitle(e.target.value);
 
@@ -48,7 +48,7 @@ function NotebookAdd() {
     e.preventDefault();
     // setHasSubmitted(true);
 
-    if (errors.length) return alert('Error during submission.')
+    // if (errors.length) return alert('Error during submission.')
 
     const notebookPayload = {
       title,
@@ -60,6 +60,8 @@ function NotebookAdd() {
     if (notebookTitleArr.includes(title)) {
       newErrors.push('Title needs to be unique!')
     }
+
+    if (title.length === 0 || title.length > 20) newErrors.push('Title needs to be between 1 to 20 characters.')
 
     if (newErrors.length > 0) {
       setErrors(newErrors)
