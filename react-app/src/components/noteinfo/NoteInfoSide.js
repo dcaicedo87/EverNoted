@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 // import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
+// import { NavLink } from 'react-router-dom'
 
 import { getAllUserNotesThunk } from '../../store/note';
 
@@ -17,9 +18,13 @@ const NoteInfoSide = () => {
     const userId = sessionUser.id;
     // console.log(userId) // console log for user id
 
+    const notebooks = sessionUser.notebooks;
+    // console.log(`***********NOTEBOOKS :`, notebooks)
+
 
     const notesArr = useSelector(state => Object.values(state.notes))
 
+    // console.log(`NOTES ARRAY: `, notesArr)
     // write helper function to order by correct.
 
     useEffect(() => {
@@ -41,9 +46,13 @@ const NoteInfoSide = () => {
             <div className='index-note-item-container'>
             {notesArr.map((note, idx) => (
                 <ul className="item-container" key={idx}>
+                    {/* <div>{notebooks[note.notebook_id] ? <NavLink className="item-container-notebooks-link" to= {`/notebooks/${note.notebook_id}/notes/${note.id}`}>{`Notebook: ${notebooks[note.notebook_id].title}`}</NavLink> : null}</div> */}
                     <a href= {`/notes/${note.id}`} className="item-container-info">
                         <li>
+
                             <div className="item-container-info-title">{note.title}</div>
+                            {/* <div className="item-container-info-notebooks">{notebooks[note.notebook_id] ? notebooks[note.notebook_id].title : null}</div> */}
+                            <div className="item-container-info-notebooks">{notebooks[note.notebook_id] ? `Notebook: ${notebooks[note.notebook_id].title}` : null}</div>
                             <div className="item-container-info-content">{note.content}</div>
                             <div className="item-container-info-update">{note.updated_at.substring(0, 16)}</div>
                         </li>
