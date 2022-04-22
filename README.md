@@ -40,7 +40,7 @@ Backend
 ### Notes
 Users can begin creating notes once signed in to Evernoted. They will be introduced to the "All Notes" page where they can click on the "ADD NOTE" button to create their very first note.
 
-![All Notes Page](https://user-images.githubusercontent.com/13339377/164794500-23cae40b-0c7d-4e5e-9d76-941d8d4accda.JPG)
+![All Notes Page](https://user-images.githubusercontent.com/13339377/164796918-4c50ac05-f6b9-4d84-a875-3446c8729f51.JPG)
 
 ### Notebooks
 
