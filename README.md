@@ -40,15 +40,15 @@ Backend
 ### Notes
 Users can begin creating notes once signed in to Evernoted. They will be introduced to the "All Notes" page where they can click on the "ADD NOTE" button to create their very first note.
 
-![All Notes Page](https://user-images.githubusercontent.com/13339377/164383637-52249cbc-b2d3-48da-82fd-3b09e9dec379.JPG)
+![All Notes Page](https://user-images.githubusercontent.com/13339377/164794500-23cae40b-0c7d-4e5e-9d76-941d8d4accda.JPG)
 
 ### Notebooks
 
 Users can also create notebooks where they can hold a collection of notes to a particular theme or idea. Once inside the notebook, you are free to add, edit and delete notes. Users also have the ability to edit the notebook title should they desire.
 
-![notebooks index page](https://user-images.githubusercontent.com/13339377/164383754-1e644219-4936-44cc-b4ed-011c2c43ecf4.JPG)
+![notebooks index page](https://user-images.githubusercontent.com/13339377/164794535-37c79f98-44c1-488f-b58a-cf52286be8fc.JPG)
 
-![notebook notes](https://user-images.githubusercontent.com/13339377/164383677-76424631-d6b0-4ade-a88c-ed0716365572.JPG)
+![notebook notes](https://user-images.githubusercontent.com/13339377/164794541-0df1e870-7156-415f-bdf8-9a8c168ac21c.JPG)
 
 
 ## Links to wiki documentation
