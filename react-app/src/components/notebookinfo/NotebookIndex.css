@@ -144,7 +144,7 @@
     -webkit-user-select: none !important;
     user-select: none !important;
 
-    background-color: rgb(160, 204, 254) !important;
+    background-color: rgba(0, 0, 0, 0.277) !important;
     height: 10rem;
     width: 20rem;
 }
