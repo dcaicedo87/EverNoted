@@ -67,7 +67,7 @@ const SignUpForm = () => {
           <img className="resize" src={evernotedLogo} alt="logo"></img>
         </div>
         <form className="login-form" onSubmit={onSignUp}>
-          <div>
+          <div className='login-form-errors'>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
