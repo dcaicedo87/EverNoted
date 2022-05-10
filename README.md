@@ -1,7 +1,7 @@
+
 Welcome to the EverNoted wiki!
 
 ![Splash](https://user-images.githubusercontent.com/13339377/167721282-6c93e2b0-7b9b-48e9-93f7-a3cd1fe43963.JPG)
-
 ## Overview
 
 [Evernoted](https://aa-evernoted.herokuapp.com/) is an [Evernote](https://evernote.com/) clone which allows users to create notes as well as notebooks to help keep their lives organized. Evernoted helps you stay on top of your thoughts and ideas should you ever need to recall them.
@@ -48,15 +48,15 @@ Backend
 
 Users can begin creating notes once signed in to Evernoted. They will be introduced to the "All Notes" page where they can click on the "ADD NOTE" button to create their very first note.
 
-![All Notes Page](https://user-images.githubusercontent.com/13339377/164383637-52249cbc-b2d3-48da-82fd-3b09e9dec379.JPG)
+![All Notes Page](https://user-images.githubusercontent.com/13339377/164796918-4c50ac05-f6b9-4d84-a875-3446c8729f51.JPG)
 
 ### Notebooks
 
 Users can also create notebooks where they can hold a collection of notes to a particular theme or idea. Once inside the notebook, you are free to add, edit and delete notes. Users also have the ability to edit the notebook title should they desire.
 
-![notebooks index page](https://user-images.githubusercontent.com/13339377/164383754-1e644219-4936-44cc-b4ed-011c2c43ecf4.JPG)
+![notebooks index page](https://user-images.githubusercontent.com/13339377/164794535-37c79f98-44c1-488f-b58a-cf52286be8fc.JPG)
 
-![notebook notes](https://user-images.githubusercontent.com/13339377/164383677-76424631-d6b0-4ade-a88c-ed0716365572.JPG)
+![notebook notes](https://user-images.githubusercontent.com/13339377/164794541-0df1e870-7156-415f-bdf8-9a8c168ac21c.JPG)
 
 ## Links to wiki documentation
 
