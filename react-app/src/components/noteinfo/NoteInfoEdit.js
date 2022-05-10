@@ -9,9 +9,9 @@ const NoteInfoEdit = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    console.log(`SESSION USER:`, sessionUser.id)
+    // console.log(`SESSION USER:`, sessionUser.id)
     const stateNotesArr = useSelector(state => Object.values(state.notes))
-    console.log(`STATE NOTES ARRAY: `, stateNotesArr)
+    // console.log(`STATE NOTES ARRAY: `, stateNotesArr)
 
 
     // const sessionNotes = useSelector((state) => state.notes)
@@ -19,7 +19,7 @@ const NoteInfoEdit = () => {
     const { noteId } = useParams();
     // console.log(`NOTE ID:`, noteId)
     const noteIdNum = parseInt(noteId)
-    console.log(`NOTED ID NUM: `, noteIdNum)
+    // console.log(`NOTED ID NUM: `, noteIdNum)
 
     const currentNote = [];
     for (let i = 0; i < stateNotesArr.length; i++) {
@@ -29,11 +29,11 @@ const NoteInfoEdit = () => {
         }
     }
 
-    console.log("CURRENT NOTE: ", currentNote)
+    // console.log("CURRENT NOTE: ", currentNote)
 
     const currentNoteUserId = currentNote[0]?.user_id;
 
-    console.log(`CURRENT NOTE USER_ID: `, currentNoteUserId)
+    // console.log(`CURRENT NOTE USER_ID: `, currentNoteUserId)
 
     let actualUserBool;
     if (currentNoteUserId === sessionUser.id) {
@@ -42,7 +42,7 @@ const NoteInfoEdit = () => {
         actualUserBool = false;
     }
 
-    console.log(`ACTUAL USER BOOLEAN: `, actualUserBool)
+    // console.log(`ACTUAL USER BOOLEAN: `, actualUserBool)
 
     const [title, setTitle] = useState(sessionUser.notes[noteId]?.title);
     const [content, setContent] = useState(sessionUser.notes[noteId]?.content);
@@ -63,7 +63,7 @@ const NoteInfoEdit = () => {
           title,
           content,
         };
-        console.log(`UPDATE NOTE:`, updatedNote)
+        // console.log(`UPDATE NOTE:`, updatedNote)
 
         //error validation
         setErrors([])
