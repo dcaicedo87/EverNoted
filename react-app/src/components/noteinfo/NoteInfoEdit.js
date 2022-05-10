@@ -63,7 +63,7 @@ const NoteInfoEdit = () => {
           title,
           content,
         };
-        console.log(`UPDATE NOTE:`, updatedNote)
+        // console.log(`UPDATE NOTE:`, updatedNote)
 
         //error validation
         setErrors([])
